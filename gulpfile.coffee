@@ -5,14 +5,16 @@
 del               = require 'del'
 fs                = require 'fs'
 gulp              = require 'gulp'
+changed           = require 'gulp-changed'
 coffee            = require 'gulp-coffee'
 concat            = require 'gulp-concat'
 filter            = require 'gulp-filter'
 foreach           = require 'gulp-foreach'
 jade              = require 'gulp-jade'
 jshint            = require 'gulp-jshint'
-ghPages           = require 'gulp-gh-pages'
 gulpIf            = require 'gulp-if'
+imagemin          = require 'gulp-imagemin'
+imageResize       = require 'gulp-image-resize'
 include           = require 'gulp-include'
 notify            = require 'gulp-notify'
 order             = require 'gulp-order'
@@ -24,8 +26,9 @@ tap               = require 'gulp-tap'
 uglify            = require 'gulp-uglify'
 gutil             = require 'gulp-util'
 gzip              = require 'gulp-gzip'
-autoprefixer      = require 'autoprefixer-core'
+autoprefixer      = require 'autoprefixer'
 mqpacker          = require 'css-mqpacker'
+csswring          = require 'csswring'
 cssnext           = require 'cssnext'
 stylish           = require 'jshint-stylish'
 lost              = require 'lost'
@@ -38,6 +41,8 @@ postcssimport     = require 'postcss-import'
 browsersync       = require 'browser-sync'
 source            = require 'vinyl-source-stream'
 watchify          = require 'watchify'
+
+ghPages           = require 'gulp-gh-pages'
 
 fatalLevel        = require('yargs').argv.fatal
 
@@ -122,8 +127,8 @@ onWarning = (error) -> handleError.call(this, 'warning', error)
 ######################
 
 gulp.task 'deploy', ->
-  gulp.src "#{paths.base.dist}/**/*"
-    .pipe ghPages()
+  return gulp.src('./dist/**/*')
+    .pipe(ghPages())
 
 gulp.task 'static-files', ->
   gulp.src "#{paths.base.src}/*.*"
@@ -132,11 +137,18 @@ gulp.task 'static-files', ->
   gulp.src "#{paths.base.src}/data/**/*"
     .pipe gulp.dest("#{paths.base.dist}/data")
 
+
+
+
 gulp.task 'html', ->
   gulp.src "#{paths.src.html}/**/[^_]*.jade"
+    # .pipe changed(paths.src.html)
     .pipe jade()
     .on('error', onError)
     .pipe gulp.dest(paths.dist.html)
+
+
+
 
 gulp.task 'css', ->
   postCSSProcessors = [
@@ -146,25 +158,43 @@ gulp.task 'css', ->
     postcssnested
     lost
     autoprefixer  browsers: ['last 1 version']
+    # mqpacker      sort: false
     cssnext       compress: false
   ]
 
   gulp.src "#{paths.src.css}/**/[^_]*.{css,scss}"
+    # .pipe changed(paths.dist.css)
     .pipe concat('app.css')
     .pipe sourcemaps.init()
       .pipe sass({ errLogToConsole: true }).on('error', onError)
       .pipe postcss(postCSSProcessors).on('error', onError)
     .pipe sourcemaps.write('maps')
     .pipe gulp.dest(paths.dist.css)
+    # .pipe gzip({ append: true })
+    # .pipe gulp.dest(paths.dist.css)
     .on('error', onError)
 
-gulp.task 'fonts', ->
-  gulp.src bower()
-    .pipe filter('{*.woff,*.eot,*.ttf,*.svg}')
-    .pipe gulp.dest(paths.dist.fonts)
+  # Copy files as-is from the bower packages. Refer to bower.json.
+  # UPDATE - should these just be brought into app.css? Commented out for now
+  # gulp.src bower()
+  #   .pipe filter('*.css')
+  #   .pipe changed(paths.dist.css)
+  #   .pipe sourcemaps.init()
+  #     .pipe postcss(postCSSProcessors)
+  #   .pipe sourcemaps.write('maps')
+  #   .pipe gulp.dest(paths.dist.css)
+  #   .pipe gzip({ append: true })
+  #   .pipe gulp.dest(paths.dist.css)
+  #   .on('error', onError)
 
+
+
+
+gulp.task 'fonts', ->
   gulp.src "#{paths.src.fonts}/**/*"
     .pipe gulp.dest(paths.dist.fonts)
+
+
 
 
 gulp.task 'js', ->
@@ -176,6 +206,7 @@ gulp.task 'js', ->
       "lib/jello/modules/**/*.js"
       "app.js"
     ])
+    # .pipe changed(paths.dist.js)
     .pipe include().on('error', onError)
     # .pipe gulpIf(/[.]js/, jshint())
     # .pipe gulpIf(/[.]js/, jshint.reporter('jshint-stylish'))
@@ -192,6 +223,7 @@ gulp.task 'js', ->
   # # Copy files as-is from the bower packages. Refer to bower.json.
   gulp.src bower()
     .pipe filter('*.js')
+    # .pipe changed(paths.dist.css)
     # .pipe sourcemaps.init()
     .pipe uglify().on('error', onError)
     # .pipe sourcemaps.write('maps')
@@ -202,14 +234,31 @@ gulp.task 'js', ->
 
 gulp.task 'images', ->
   gulp.src("#{paths.src.images}/**/*.{gif,jpg,png,svg,swf}")
+    # .pipe changed(paths.dist.images)
+    # .pipe imagemin
+    #   progressive: true,
+    #   svgoPlugins: [removeViewBox: false],
+    #   optimizationLevel: 3 # png
     .pipe gulp.dest(paths.dist.images)
+
+
+
 
 gulp.task 'clean', ->
   deleteFolderRecursive(paths.base.dist)
 
+
+
+
 gulp.task 'build', ['static-files', 'html', 'css', 'fonts', 'js', 'images']
 
+
+
+
 gulp.task 'refresh', ['clean', 'build']
+
+
+
 
 gulp.task 'browsersync', ->
   browsersync.use
@@ -220,6 +269,9 @@ gulp.task 'browsersync', ->
     server:
       baseDir: paths.dist.html
 
+
+
+
 gulp.task 'watch', ['browsersync'], ->
   watching = true
   gulp.watch ["#{paths.base.src}/*.*", "#{paths.base.src}/data/**/*"], ['static-files']
@@ -228,5 +280,7 @@ gulp.task 'watch', ['browsersync'], ->
   gulp.watch "#{paths.src.fonts}/**/*", ['fonts']
   gulp.watch "#{paths.src.js}/**/*.{js,coffee}", ['js']
   gulp.watch "#{paths.src.images}/**/*.{gif,jpg,png,svg,swf}", ['images']
+
+
 
 gulp.task 'default', ['refresh', 'watch']
