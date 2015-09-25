@@ -1,3 +1,9 @@
-html
-  body
-    p Aloha e Honua.
+extends layouts/_application
+
+block content
+  - var backgroundIDs = [839, 823, 796]
+
+  section.bgs
+    - for (var i = 0; i < 3; ++i)
+      .bg
+        div(style="background-image:url('//unsplash.it/1000/?image=#{backgroundIDs[i]}');")
