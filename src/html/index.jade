@@ -1,16 +1,20 @@
 extends layouts/_application
 
 block content
-  - var backgroundIDs = [839, 796, 823]
+  - var backgroundIDs = [839, 823]
 
   section.content
     .postcard
       .container
-        h1 LOGOTEXTGOES HERE
-        .ruled
-          p this is<br>the tagline.
+        .centered
+          h1 LOGOTEXTGOES HERE
+          .ruled-cta
+            a(href="#") Book an<br>appointment!
+          .contacts
+            .contact address
+            .contact phone
 
   section.bgs
-    - for (var i = 0; i < 3; ++i)
+    - for (var i = 0; i < 2; ++i)
       .bg
         div(style="background-image:url('//unsplash.it/1000/?image=#{backgroundIDs[i]}');")
