@@ -1,7 +1,14 @@
 extends layouts/_application
 
 block content
-  - var backgroundIDs = [839, 823, 796]
+  - var backgroundIDs = [839, 796, 823]
+
+  section.content
+    .postcard
+      .container
+        h1 LOGOTEXTGOES HERE
+        .ruled
+          p this is<br>the tagline.
 
   section.bgs
     - for (var i = 0; i < 3; ++i)
