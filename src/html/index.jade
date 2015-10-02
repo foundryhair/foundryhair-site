@@ -2,18 +2,22 @@ extends layouts/_application
 
 block content
   - var backgroundIDs = [839, 823]
-
   section.content
     .postcard
       .container
-        .centered
-          include ../assets/images/foundry-logo.svg
-          p The salon of hair stylist and make-up artist @mbhair.
-          .ruled-cta
-            a(href="#") Book an<br>appointment!
-          .contacts
-            .contact address
-            .contact phone
+        .side.side-01
+          .centered
+            include ../assets/images/foundry-logo.svg
+            p The salon of hair stylist and make-up artist @mbhair.
+            .ruled-cta
+              a(href="#") Book an<br>appointment!
+            .contacts
+              .contact address
+              .contact phone
+          a.flip-button(href="#") flip
+        .side.side-02
+          a.flip-button(href="#") flip
+          p fuggle nugget
 
   section.bgs
     - for (var i = 0; i < 2; ++i)
