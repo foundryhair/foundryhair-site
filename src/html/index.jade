@@ -1,7 +1,7 @@
 extends layouts/_application
 
 block content
-  - var backgroundIDs = [839, 823]
+
   section.content
     .postcard
       .container
@@ -22,4 +22,4 @@ block content
   section.bgs
     - for (var i = 0; i < 2; ++i)
       .bg
-        div(style="background-image:url('//unsplash.it/1000/?image=#{backgroundIDs[i]}');")
+        div(style="background-image:url('assets/images/filler-0#{i+1}.jpg');")
