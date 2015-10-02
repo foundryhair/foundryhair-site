@@ -1,3 +1,25 @@
-html
-  body
-    p Aloha e Honua.
+extends layouts/_application
+
+block content
+
+  section.content
+    .postcard
+      .container
+        .side.side-01
+          .centered
+            include ../assets/images/foundry-logo.svg
+            h2.tagline salon cooperative + creative space
+            .ruled-cta
+              a(href="#") Book an<br>appointment!
+            .contacts
+              .contact 418A Kuulei Rd., Unit C<br>Kailua, HI 96734
+              .contact mbhairhnl@gmail.com<br>@mbhair
+          a.flip-button(href="#") flip
+        .side.side-02
+          p The salon of hair stylist and make-up artist @mbhair.
+          a.flip-button(href="#") flip
+
+  section.bgs
+    - for (var i = 0; i < 2; ++i)
+      .bg
+        div(style="background-image:url('assets/images/filler-0#{i+1}.jpg');")

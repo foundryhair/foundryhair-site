@@ -1,0 +1,16 @@
+$column-gutter:  1rem;
+$row-width:      420px;
+
+$easeOutExpo:    cubic-bezier(0.19, 1, 0.22, 1);
+
+$body-font-family:   "brandon-grotesque",sans-serif;
+$script-font-family: "lakeside", sans-serif;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $body-font-family;
+  font-weight: 200;
+}

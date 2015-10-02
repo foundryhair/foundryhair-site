@@ -1,0 +1,93 @@
+section.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  width: 90%;
+  z-index: 100;
+  lost-utility: clearfix;
+  transition: width 500ms $easeOutExpo;
+}
+
+@media screen and (min-width: 640px) {
+  section.content {
+    width: percentage(2/3);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  section.content {
+    width: percentage(2/5);
+  }
+}
+
+svg.foundry-logo {
+  display: block;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+h2.tagline {
+  margin-top: $column-gutter;
+  margin-bottom: 0;
+  color: #999;
+  font-weight: 200;
+}
+
+.ruled-cta {
+
+  border-top: 1px solid #D2D0C7;
+  border-bottom: 1px solid #D2D0C7;
+  margin: ($column-gutter*5) auto;
+
+  a {
+    display: inline-block;
+    font: 1.75rem/.5 $script-font-family;
+    color: #444;
+    text-decoration: none;
+    transform: rotate(-15deg) translateY(-50%) scale(2.5);
+
+  }
+}
+
+.contacts {
+  text-transform: uppercase;
+  font-size: .9rem;
+  line-height: 1.5;
+  .contact {
+    lost-column: 1/2 2 0;
+  }
+}
+
+section.bgs {
+  position: relative;
+  lost-utility: clearfix;
+
+  transition: transform $easeOutExpo 1.25s;
+
+  .postcard-flipped & {
+    transform: scale(.95);
+    -webkit-filter: blur(10px);
+  }
+
+  .bg {
+    lost-column: 1/2 0 0;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    &:nth-of-type(1) div {
+      background-position: right center;
+    }
+    div {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+
+      background-size: cover;
+      background-repeat: no-repeat;
+
+    }
+  }
+}
