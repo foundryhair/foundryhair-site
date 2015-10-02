@@ -1,4 +1,4 @@
 $('.flip-button').on('click', function(e) {
   e.preventDefault();
-  $('.postcard').toggleClass('flipped');
+  $('body').toggleClass('postcard-flipped');
 });

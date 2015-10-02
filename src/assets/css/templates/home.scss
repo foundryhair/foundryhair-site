@@ -60,7 +60,16 @@ h2.tagline {
 }
 
 section.bgs {
+  position: relative;
   lost-utility: clearfix;
+
+  transition: all $easeOutExpo 1.25s;
+
+  .postcard-flipped & {
+    transform: scale(.95);
+    -webkit-filter: blur(10px);
+  }
+
   .bg {
     lost-column: 1/2 0 0;
     height: 100vh;

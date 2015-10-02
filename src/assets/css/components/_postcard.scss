@@ -6,7 +6,7 @@
 
   perspective: 1000;
 
-  &.flipped .container { transform: rotateY(180deg); }
+  .postcard-flipped & .container { transform: rotateY(180deg); }
 
   .container, .container .side {
     position: absolute;
@@ -17,7 +17,6 @@
   }
 
   .container {
-
     transition: 1.25s $easeOutExpo;
     transform-style: preserve-3d;
   }
