@@ -1,0 +1,1 @@
+{"version":3,"sources":["app.js"],"names":["$","on","e","preventDefault","toggleClass"],"mappings":"AAAAA,EAAE,gBAAgBC,GAAG,QAAS,SAASC,GACrCA,EAAEC,iBACFH,EAAE,QAAQI,YAAY","file":"app.js","sourcesContent":["$('.flip-button').on('click', function(e) {\n  e.preventDefault();\n  $('body').toggleClass('postcard-flipped');\n});"],"sourceRoot":"/source/"}
