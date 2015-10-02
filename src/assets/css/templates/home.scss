@@ -28,23 +28,24 @@ svg.foundry-logo {
 }
 
 .ruled-cta {
+
   border-top: 1px solid #D2D0C7;
   border-bottom: 1px solid #D2D0C7;
-  margin: ($column-gutter*3) auto;
-  width: 320px;
-  max-width: 95%;
+  margin: ($column-gutter*4) auto;
 
   a {
     display: inline-block;
     font: 1.75rem/.5 $script-font-family;
     color: #444;
     text-decoration: none;
-    transform: rotate(-15deg) translateY(-30%) scale(2.5);
+    transform: rotate(-15deg) translateY(-50%) scale(2.5);
   }
 }
 
 .contacts {
-
+  .contact {
+    lost-column: 1/2 2;
+  }
 }
 
 section.bgs {
