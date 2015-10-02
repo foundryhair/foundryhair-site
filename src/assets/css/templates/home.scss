@@ -63,7 +63,7 @@ section.bgs {
   position: relative;
   lost-utility: clearfix;
 
-  transition: all $easeOutExpo 1.25s;
+  transition: transform $easeOutExpo 1.25s;
 
   .postcard-flipped & {
     transform: scale(.95);
