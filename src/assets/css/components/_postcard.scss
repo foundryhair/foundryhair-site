@@ -6,7 +6,7 @@
 
   perspective: 1000;
 
-  .postcard-flipped & .container { transform: rotateY(180deg); }
+  .postcard-flipped & .container { transform: rotateX(180deg); }
 
   .container, .container .side {
     position: absolute;
@@ -32,12 +32,12 @@
 
     &.side-01 {
       z-index: 2;
-      transform: rotateY(0deg);
+      transform: rotateX(0deg);
       background: #fff;
     }
     &.side-02 {
       z-index: 1;
-      transform: rotateY(180deg);
+      transform: rotateX(180deg);
       background: #111;
       color: #fff;
     }
