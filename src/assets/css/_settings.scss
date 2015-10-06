@@ -1,4 +1,4 @@
-$column-gutter:  1rem;
+$column-gutter:  1em;
 $row-width:      420px;
 
 $easeOutExpo:    cubic-bezier(0.19, 1, 0.22, 1);
@@ -15,4 +15,11 @@ $c-brown:      #604B43;
 body {
   font-family: $body-font-family;
   font-weight: 200;
+  font-size: 80%;
+}
+
+@media screen and (min-width: 1024px) {
+  body {
+    font-size: 100%;
+  }
 }
