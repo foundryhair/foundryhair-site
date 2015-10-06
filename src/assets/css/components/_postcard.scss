@@ -77,10 +77,37 @@
 
 a.flip-button {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 0;
-  padding: $column-gutter;
-  background: #eee;
-
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: ($column-gutter/4);
+  text-decoration: none;
+  background: #1a1a1a;
+  border-radius: 0 0 5px 5px;
+  letter-spacing: .1rem;
+  transition: all 250ms $easeOutExpo;
+  .side-01 & {
+    color: #fff;
+    background: #1a1a1a;
+    &:hover {
+      color: #ddd;
+      background: #111;
+    }
+  }
+  .side-02 & {
+    color: #aaa;
+    background: transparent;
+    &:hover {
+      color: #ccc;
+    }
+  }
 }
+
+// @media screen and (min-width: 1024px) {
+//   a.flip-button {
+//     bottom: initial;
+//     top: 50%;
+//     transform: translateY(-50%);
+//     right: 0;
+//   }
+// }
