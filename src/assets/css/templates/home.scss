@@ -35,10 +35,23 @@ h2.tagline {
 }
 
 .ruled-cta {
+  position: relative;
 
   border-top: 1px solid #D2D0C7;
   border-bottom: 1px solid #D2D0C7;
   margin: ($column-gutter*5) auto;
+
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 20px;
+    width: 118px;
+    background-image: url('../images/logo-styleseat.png');
+    background-size: 100% 100%;
+    opacity: .45;
+  }
 
   a {
     display: inline-block;
@@ -46,7 +59,9 @@ h2.tagline {
     color: #444;
     text-decoration: none;
     transform: rotate(-15deg) translateY(-50%) scale(2.5);
-
+    &:hover {
+      color: $c-brown;
+    }
   }
 }
 
