@@ -1,8 +1,14 @@
 .postcard {
-  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  z-index: 110;
+  // margin: 0 auto;
 
-  height: 0;
-  padding-bottom: 68%;
+  width: 90%;
+  max-height: 500px;
+  height: 85%;
 
   perspective: 1000;
 
@@ -53,7 +59,20 @@
       margin: 0;
     }
   }
+}
 
+@media screen and (min-width: 560px) {
+  .postcard {
+    width: 520px;
+    height: 400px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .postcard {
+    width: 700px;
+    height: 480px;
+  }
 }
 
 a.flip-button {
