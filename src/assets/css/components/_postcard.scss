@@ -3,7 +3,7 @@
   top: 50%;
   left: 50%;
   transform: translate3d(-50%, -50%, 0);
-  z-index: 110;
+  z-index: $base-zindex;
   // margin: 0 auto;
 
   width: 90%;
