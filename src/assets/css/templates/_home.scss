@@ -66,13 +66,16 @@ h2.tagline {
 }
 
 section.bgs {
-  position: relative;
   lost-utility: clearfix;
 
-  transition: transform $easeOutExpo 1.25s;
+  position: relative;
+  z-index: 1;
+
+
+  transition: filter ease-out 250ms;
 
   .postcard-flipped & {
-    transform: scale(.95);
+    // transform: scale(.95);
     -webkit-filter: blur(10px);
   }
 
