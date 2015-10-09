@@ -49,15 +49,22 @@
     }
   }
 
-
-  .centered {
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-    lost-center: $row-width;
-    h1 {
-      margin: 0;
+  .column {
+    lost-column: 1/2 2 ($column-gutter/2);
+    .foundry-logo path { fill: #fff; }
+    &:nth-child(2) {
+      height: 100%;
     }
+  }
+}
+
+.centered {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  lost-center: $row-width;
+  h1 {
+    margin: 0;
   }
 }
 
