@@ -10,6 +10,7 @@ svg.foundry-logo {
   display: block;
   max-width: 240px;
   margin: 0 auto;
+  path { fill: $c-pallete1; }
 }
 
 @media screen and (min-width: 1024px) {
@@ -47,11 +48,12 @@ h2.tagline {
   a {
     display: inline-block;
     font: 1.75em/.5 $script-font-family;
-    color: #444;
+    color: $c-pallete1;
     text-decoration: none;
     transform: rotate(-15deg) translateY(-50%) scale(2.5);
+    transition: color 150ms $easeOutExpo;
     &:hover {
-      color: $c-brown;
+      color: lighten($c-pallete1,15%);
     }
   }
 }

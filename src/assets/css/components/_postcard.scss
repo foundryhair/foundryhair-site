@@ -82,16 +82,15 @@ a.flip-button {
   width: 100%;
   padding: ($column-gutter/4);
   text-decoration: none;
-  background: #1a1a1a;
   border-radius: 0 0 5px 5px;
   letter-spacing: .1rem;
   transition: all 250ms $easeOutExpo;
   .side-01 & {
     color: #fff;
-    background: #1a1a1a;
+    background: $c-pallete3;
     &:hover {
-      color: #ddd;
-      background: #111;
+      // color: $c-pallete1;
+      background: darken($c-pallete3,2%);
     }
   }
   .side-02 & {

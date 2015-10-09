@@ -8,7 +8,11 @@ $easeOutExpo:        cubic-bezier(0.19, 1, 0.22, 1);
 $body-font-family:   "brandon-grotesque",sans-serif;
 $script-font-family: "lakeside", sans-serif;
 
-$c-brown:            #604B43;
+$c-pallete1:            #3D3C40;
+$c-pallete2:            #DFBC8C;
+$c-pallete3:            #B9A895;
+$c-pallete4:            #855E56;
+$c-pallete5:            #8E655A;
 
 * {
   box-sizing: border-box;
@@ -18,6 +22,7 @@ body {
   font-family: $body-font-family;
   font-weight: 200;
   font-size: 80%;
+  color: $c-pallete1;
 }
 
 @media screen and (min-width: 1024px) {
