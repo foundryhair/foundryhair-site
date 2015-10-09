@@ -12,7 +12,7 @@
 
   perspective: 1000;
 
-  .postcard-flipped & .container { transform: rotateX(180deg); }
+  .postcard-flipped & .container { transform: rotateX(-180deg); }
 
   .container, .container .side {
     position: absolute;
