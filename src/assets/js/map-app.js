@@ -34,6 +34,7 @@ var App = (function (window, document, undefined) {
 
       // Map init, configuration
       mapInit = function () {
+
         var markerLatLng = new google.maps.LatLng(21.3953052, -157.743259),
             mapCenter = new google.maps.LatLng(lat, lng),
             mapOptions = {
@@ -42,25 +43,39 @@ var App = (function (window, document, undefined) {
               mapTypeId: google.maps.MapTypeId.ROADMAP,
               styles: mapStyles,
               mapTypeControl: false,
+              scaleControl: false,
+              streetViewControl: false,
+              rotateControl: false,
               zoomControl: true,
               zoomControlOptions: {
                 position: google.maps.ControlPosition.RIGHT_TOP
               }
             },
             map = new google.maps.Map(document.getElementById("map"), mapOptions),
-            marker;
+            // marker,
+            infoWindow;
+
+        var contentString = '<div id="infowindow">'+
+            '<p><strong>Foundry Salon</strong><br>418A KUULEI RD., UNIT C<br>KAILUA, HI 96734</p>' +
+            '</div>';
 
         $('.flip-button').on('click', function() {
           if ($('body').hasClass('postcard-flipped')) {
             setTimeout(function(){
-              marker = new google.maps.Marker({
+              // marker = new google.maps.Marker({
+              //   position: markerLatLng,
+              //   animation: google.maps.Animation.DROP,
+              //   map: map
+              // });
+              infoWindow = new google.maps.InfoWindow({
+                content: contentString,
                 position: markerLatLng,
-                animation: google.maps.Animation.DROP,
                 map: map
-              })
-            }, 250);
+              });
+            }, 500);
           } else {
-            marker.setMap(null);
+            // marker.setMap(null);
+            infoWindow.close();
           }
         });
       },
