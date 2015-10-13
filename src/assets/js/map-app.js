@@ -52,30 +52,19 @@ var App = (function (window, document, undefined) {
               }
             },
             map = new google.maps.Map(document.getElementById("map"), mapOptions),
-            // marker,
-            infoWindow;
-
-        var contentString = '<div id="infowindow">'+
-            '<p><strong>Foundry Salon</strong><br>418A KUULEI RD., UNIT C<br>KAILUA, HI 96734</p>' +
-            '</div>';
+            marker;
 
         $('.flip-button').on('click', function() {
           if ($('body').hasClass('postcard-flipped')) {
             setTimeout(function(){
-              // marker = new google.maps.Marker({
-              //   position: markerLatLng,
-              //   animation: google.maps.Animation.DROP,
-              //   map: map
-              // });
-              infoWindow = new google.maps.InfoWindow({
-                content: contentString,
+              marker = new google.maps.Marker({
                 position: markerLatLng,
+                animation: google.maps.Animation.DROP,
                 map: map
               });
             }, 500);
           } else {
-            // marker.setMap(null);
-            infoWindow.close();
+            marker.setMap(null);
           }
         });
       },
