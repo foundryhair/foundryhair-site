@@ -127,7 +127,7 @@ a.flip-button {
     left: 0;
     width: 100%;
     height: 100%;
-    background: transparent;
+    background: rgba(#000,.5);
     transition: background 1s $easeOutExpo;
   }
   .postcard-flipped & {
@@ -143,8 +143,5 @@ a.flip-button {
     width: 50%;
     height: 100%;
     padding-bottom: 0;
-    &:hover:after {
-      background: rgba(#000,.725);
-    }
   }
 }
