@@ -48,7 +48,7 @@ var App = (function (window, document, undefined) {
               rotateControl: false,
               zoomControl: true,
               zoomControlOptions: {
-                position: google.maps.ControlPosition.RIGHT_TOP
+                position: google.maps.ControlPosition.LEFT_TOP
               }
             },
             map = new google.maps.Map(document.getElementById("map"), mapOptions),
