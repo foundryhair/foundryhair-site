@@ -34,18 +34,34 @@ var App = (function (window, document, undefined) {
 
       // Map init, configuration
       mapInit = function () {
-        var mapCenter = new google.maps.LatLng(lat, lng),
+        var markerLatLng = new google.maps.LatLng(21.3953052, -157.743259),
+            mapCenter = new google.maps.LatLng(lat, lng),
             mapOptions = {
-            center: mapCenter,
-            zoom: 17,
-            mapTypeId: google.maps.MapTypeId.ROADMAP,
-            styles: mapStyles
-          },
-          map = new google.maps.Map(document.getElementById("map"), mapOptions),
-          marker = new google.maps.Marker({
-          position: mapCenter,
-          title: "Title",
-          map: map
+              center: mapCenter,
+              zoom: 17,
+              mapTypeId: google.maps.MapTypeId.ROADMAP,
+              styles: mapStyles,
+              mapTypeControl: false,
+              zoomControl: true,
+              zoomControlOptions: {
+                position: google.maps.ControlPosition.RIGHT_TOP
+              }
+            },
+            map = new google.maps.Map(document.getElementById("map"), mapOptions),
+            marker;
+
+        $('.flip-button').on('click', function() {
+          if ($('body').hasClass('postcard-flipped')) {
+            setTimeout(function(){
+              marker = new google.maps.Marker({
+                position: markerLatLng,
+                animation: google.maps.Animation.DROP,
+                map: map
+              })
+            }, 250);
+          } else {
+            marker.setMap(null);
+          }
         });
       },
 
@@ -58,7 +74,7 @@ var App = (function (window, document, undefined) {
           js = document.createElement('script');
           js.id = 'gmap-api';
           js.setAttribute('async', '');
-          js.src = "http://maps.google.com/maps/api/js?sensor=false&callback=App.mapInit";
+          js.src = "http://maps.google.com/maps/api/js?v=3&sensor=false&callback=App.mapInit";
           fjs.parentNode.insertBefore(js, fjs);
         }
       };
