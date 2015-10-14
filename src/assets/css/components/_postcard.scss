@@ -33,13 +33,13 @@
     border-radius: 5px;
 
     padding: ($column-gutter*2);
-    text-align: center;
     box-shadow: 0 2px 3px 1px rgba(#000,.1);
 
     &.side-01 {
       z-index: 2;
       transform: rotateX(0deg);
       background: #fff;
+      text-align: center;
     }
     &.side-02 {
       z-index: 1;
@@ -57,8 +57,21 @@
 
     .foundry-logo path { fill: #fff; }
 
+    &:nth-child(1) {
+      text-align: center;
+    }
     &:nth-child(2) {
-      height: 100%;
+      // height: 100%;
+      h6 {
+        margin: 0 0 .25em;
+        padding: 0 0 .5em;
+        border-bottom: rgba(#fff,.125) 1px solid;
+        letter-spacing: .1rem;
+      }
+      p {
+        margin-top: .5em;
+        font-size: 1rem;
+      }
     }
   }
 }
@@ -133,6 +146,7 @@ a.flip-button {
   text-decoration: none;
   border-radius: 0 0 5px 5px;
   letter-spacing: .1rem;
+  text-align: center;
   transition: all 250ms $easeOutExpo;
   .side-01 & {
     color: #fff;
