@@ -1,4 +1,5 @@
 .postcard {
+
   position: absolute;
   top: 50%;
   left: 50%;
@@ -12,7 +13,11 @@
 
   perspective: 1000;
 
-  .postcard-flipped & .container { transform: rotateX(-180deg); }
+  .postcard-flipped & {
+    .container {
+      transform: rotateX(-180deg);
+    }
+  }
 
   .container, .container .side {
     position: absolute;
@@ -50,8 +55,6 @@
   }
 
   .column {
-    lost-column: 1/2 2 ($column-gutter*4);
-
     position: relative;
     z-index: ($base-zindex + 50);
 
@@ -72,6 +75,48 @@
         margin-top: .5em;
         font-size: 1rem;
       }
+    }
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .postcard-flipped .postcard {
+    position: absolute;
+    top: 2.5%;
+    transform: translate3d(-50%, 0, 0);
+    height: 95%;
+    max-height: none;
+    .container {
+      transform: rotateX(-180deg);
+      lost-utility: clearfix;
+    }
+    .side {
+      overflow: scroll;
+      -webkit-overflow-scrolling: touch;
+    }
+    svg.foundry-logo {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+    a.flip-button {
+      bottom: initial;
+      top: 0;
+    }
+    .column {
+      &:nth-child(2) {
+        h6 {
+          margin: 3em 0 1em;
+          padding: 0 0 1em;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .postcard {
+    .column {
+      lost-column: 1/2 2 ($column-gutter*4);
     }
   }
 }
@@ -165,38 +210,40 @@ a.flip-button {
   }
 }
 
-#map {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 0;
-  padding-bottom: 40%;
-  overflow: hidden;
+// #map {
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 0;
+//   padding-bottom: 30%;
+//   overflow: hidden;
+// }
 
-  border-radius: 5px 5px 0 0;
-  &:after {
-    content: "";
+@media screen and (min-width: 800px) {
+  #map {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(#000,.5);
-    transition: background 1s $easeOutExpo;
-  }
-  .postcard-flipped & {
-    &:after {
-      background: rgba(#000,.75);
-    }
-  }
-}
-
-@media screen and (min-width: 1024px) {
-  #map {
-
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
     width: 50%;
     height: 100%;
     padding-bottom: 0;
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(#000,.5);
+      transition: background 1s $easeOutExpo;
+    }
+    .postcard-flipped & {
+      &:after {
+        background: rgba(#000,.75);
+      }
+    }
   }
 }

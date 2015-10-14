@@ -3,7 +3,7 @@ var App = (function (window, document, undefined) {
   'use strict';
 
   // Only request the API if this element exists
-  if ($('#map').length) {
+  if ($('#map').length && !Modernizr.touch) {
 
     // Get latitude and longitude from data attributes
     var map = $('#map'),
