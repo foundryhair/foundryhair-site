@@ -46,10 +46,7 @@ var App = (function (window, document, undefined) {
               scaleControl: false,
               streetViewControl: false,
               rotateControl: false,
-              zoomControl: true,
-              zoomControlOptions: {
-                position: google.maps.ControlPosition.LEFT_TOP
-              }
+              zoomControl: false
             },
             map = new google.maps.Map(document.getElementById("map"), mapOptions),
             marker;
