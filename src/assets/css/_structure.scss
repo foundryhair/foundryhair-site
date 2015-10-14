@@ -1,0 +1,23 @@
+main.main {
+  @include overlayColor(#fff, .5);
+}
+
+.btn-inline {
+  display: inline-block;
+  padding: .175rem .5rem;
+  border-radius: 2px 2px 0 0;
+  // margin-left: .25rem;
+  float: right;
+  background: rgba(#fff,.125);
+
+  // font-size: .75rem;
+  letter-spacing: .05rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+
+  transition: 250ms background $easeOutExpo;
+  &:hover {
+    background: rgba(#fff, .25);
+  }
+}

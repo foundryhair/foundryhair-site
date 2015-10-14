@@ -202,8 +202,6 @@ gulp.task 'js', ->
   gulp.src "#{paths.src.js}/**/[^_]*.{js,coffee}"
     .pipe order([
       "utils.js"
-      "lib/jello/jello.js"
-      "lib/jello/modules/**/*.js"
       "app.js"
     ])
     # .pipe changed(paths.dist.js)

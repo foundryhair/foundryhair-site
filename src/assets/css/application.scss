@@ -1,7 +1,9 @@
 @import '../../../bower_components/normalize.css/normalize.css';
 
 @import 'settings';
+@import 'structure';
 
 @import 'components/postcard';
+@import 'components/copyright';
 
 @import 'templates/home';

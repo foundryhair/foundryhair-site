@@ -8,18 +8,41 @@ block content
         .side.side-01
           .centered
             include ../assets/images/foundry-logo.svg
-            h2.tagline salon cooperative + creative space
+            //- h2.tagline salon cooperative + creative space
             .ruled-cta
-              a(href="#") Book an<br>appointment!
+              a(href="https://www.styleseat.com/mbhair" target="_blank") Book an<br>appointment!
             .contacts
-              .contact 418A Kuulei Rd., Unit C<br>Kailua, HI 96734
-              .contact mbhairhnl@gmail.com<br>@mbhair
-          a.flip-button(href="#") flip
+              .contact PH: (808) 255-6067<br>9AM - 6PM
+              .contact 418A Kuulei Rd, Unit C<br>Kailua, HI 96734
+          a.flip-button(href="#") ABOUT US
         .side.side-02
-          p The salon of hair stylist and make-up artist @mbhair.
-          a.flip-button(href="#") flip
+          .column
+            include ../assets/images/foundry-logo.svg
+            .row
+              p PH: (808) 255-6067
+              a(href="mailto:mbhairhnl@gmail.com") MBHAIRHNL@GMAIL.COM
+            .row
+              p 9AM - 6PM
+            .row
+              p 418A KUULEI RD, UNIT C<br>KAILUA, HI 96734
+            .row
+              a(href="http://instagram.com/foundryco.op" target="_blank")
+                include ../assets/images/icon-instagram.svg
+                | FOUNDRYCO.OP
+          .column
+            h6 SALON <a class="btn-inline" href="https://www.styleseat.com/mbhair#carousel" target="_blank">Services/Prices</a>
+            p Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.
+            h6 COOPERATIVE
+            p Donec ullamcorper nulla non metus auctor fringilla. Etiam porta sem malesuada magna mollis euismod. Vestibulum id ligula porta felis euismod semper.
+            h6 CREATIVE SPACE
+            p Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.
+          a.flip-button(href="#") CLOSE
+          #map(data-lat="21.395719" data-lng="-157.742035")
+
+  section.copyright
+    span © 2015 Foundry Salon & Cooperative
 
   section.bgs
-    - for (var i = 0; i < 2; ++i)
       .bg
-        div(style="background-image:url('assets/images/filler-0#{i+1}.jpg');")
+        .full-bg(style="background-image:url('assets/images/filler-02.jpg');")
+      .bg#instagram-feed

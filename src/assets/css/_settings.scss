@@ -1,10 +1,18 @@
-$column-gutter:  1rem;
-$row-width:      420px;
+$column-gutter:      1em;
+$row-width:          420px;
 
-$easeOutExpo:    cubic-bezier(0.19, 1, 0.22, 1);
+$base-zindex:        100;
+
+$easeOutExpo:        cubic-bezier(0.19, 1, 0.22, 1);
 
 $body-font-family:   "brandon-grotesque",sans-serif;
 $script-font-family: "lakeside", sans-serif;
+
+$c-pallete1:            #3D3C40;
+$c-pallete2:            #DFBC8C;
+$c-pallete3:            #B9A895;
+$c-pallete4:            #855E56;
+$c-pallete5:            #8E655A;
 
 * {
   box-sizing: border-box;
@@ -13,4 +21,26 @@ $script-font-family: "lakeside", sans-serif;
 body {
   font-family: $body-font-family;
   font-weight: 200;
+  font-size: 80%;
+  color: $c-pallete1;
+}
+
+@media screen and (min-width: 1024px) {
+  body {
+    font-size: 100%;
+  }
+}
+
+@mixin overlayColor($overlay-color: #fff, $overlay-opacity:.8) {
+  position: relative;
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba($overlay-color, $overlay-opacity);
+    z-index: 2;
+  }
 }
