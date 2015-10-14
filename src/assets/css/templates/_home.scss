@@ -8,30 +8,34 @@ section.content {
 
 svg.foundry-logo {
   display: block;
-  max-width: 240px;
+  width: 100%;
   margin: 0 auto;
-  path { fill: $c-pallete1; }
+  padding: 0 ($column-gutter*2);
+  path {
+    &.text-foundry { fill: $c-pallete1; }
+    &.text-salon-coop { fill: lighten(desaturate($c-pallete2,20%),3%); }
+  }
 }
 
 @media screen and (min-width: 1024px) {
   svg.foundry-logo {
-    max-width: 420px;
+    // max-width: 420px;
   }
 }
 
-h2.tagline {
-  margin-top: $column-gutter;
-  margin-bottom: 0;
-  color: #999;
-  font-weight: 200;
-}
+// h2.tagline {
+//   margin-top: $column-gutter;
+//   margin-bottom: 0;
+//   color: #999;
+//   font-weight: 200;
+// }
 
 .ruled-cta {
   position: relative;
 
   border-top: 1px solid #D2D0C7;
   border-bottom: 1px solid #D2D0C7;
-  margin: ($column-gutter*5) auto;
+  margin: ($column-gutter*4) auto ($column-gutter*6);
 
   &:after {
     content: "";
