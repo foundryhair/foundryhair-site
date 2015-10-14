@@ -32,7 +32,7 @@
 
     border-radius: 5px;
 
-    padding: ($column-gutter*2) $column-gutter;
+    padding: ($column-gutter*2);
     text-align: center;
     box-shadow: 0 2px 3px 1px rgba(#000,.1);
 
@@ -50,10 +50,51 @@
   }
 
   .column {
-    lost-column: 1/2 2 ($column-gutter/2);
+    lost-column: 1/2 2 ($column-gutter*4);
+
+    position: relative;
+    z-index: ($base-zindex + 50);
+
     .foundry-logo path { fill: #fff; }
+
     &:nth-child(2) {
       height: 100%;
+    }
+  }
+}
+
+.row {
+  margin-top: ($column-gutter*1.5);
+  padding-top: ($column-gutter*1.5);
+  border-top: rgba(#fff,.125) 1px solid;
+
+  &:first-of-type {
+    margin-top: 0;
+    border-top: 0;
+  }
+  p {
+    margin: 0;
+  }
+  a {
+    display: block;
+    text-decoration: none;
+    color: #fff;
+    transition: color 250ms $easeOutExpo;
+    &:hover {
+      color: $c-pallete2;
+      svg path { fill: $c-pallete2; }
+    }
+  }
+  svg {
+    display: inline-block;
+    height: 1.1em;
+
+    position: relative;
+    top: 2px;
+    margin-right: 3px;
+    path {
+      fill: #fff;
+      transition: fill 250ms $easeOutExpo;
     }
   }
 }

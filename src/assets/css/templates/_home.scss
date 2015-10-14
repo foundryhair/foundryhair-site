@@ -9,8 +9,18 @@ section.content {
 svg.foundry-logo {
   display: block;
   width: 100%;
-  margin: 0 auto;
-  padding: 0 ($column-gutter*2);
+  // margin: 0 auto;
+  .side-01 & { padding: 0 ($column-gutter*2); }
+  .side-02 & {
+    margin: 0 auto;
+    width: 50%;
+    // border-left: 2px solid rgba($c-pallete2, .5);
+    border-right: 2px solid rgba($c-pallete2, .25);
+    border-bottom: 2px solid rgba($c-pallete2, .25);
+    padding: ($column-gutter*.75);
+    border-radius: 3px 0 3px 0;
+    background: rgba($c-pallete2, .5);
+  }
   path {
     &.text-foundry { fill: $c-pallete1; }
     &.text-salon-coop { fill: lighten(desaturate($c-pallete2,20%),3%); }
@@ -68,28 +78,6 @@ svg.foundry-logo {
   line-height: 1.5;
   .contact {
     lost-column: 1/2 2 0;
-    a {
-      display: block;
-      text-decoration: none;
-      color: $c-pallete1;
-      transition: color 250ms $easeOutExpo;
-      &:hover {
-        color: $c-pallete5;
-        svg path { fill: $c-pallete5; }
-      }
-    }
-    svg {
-      display: inline-block;
-      height: 1.1em;
-
-      position: relative;
-      top: 2px;
-      margin-right: 3px;
-      path {
-        fill: $c-pallete1;
-        transition: fill 250ms $easeOutExpo;
-      }
-    }
   }
 }
 
