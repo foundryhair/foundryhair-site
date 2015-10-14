@@ -55,7 +55,7 @@ svg.foundry-logo {
     color: $c-pallete1;
     text-decoration: none;
     transform: rotate(-15deg) translateY(-50%) scale(2.5);
-    transition: color 150ms $easeOutExpo;
+    transition: color 500ms $easeOutExpo;
     &:hover {
       color: lighten($c-pallete1,15%);
     }
@@ -68,6 +68,28 @@ svg.foundry-logo {
   line-height: 1.5;
   .contact {
     lost-column: 1/2 2 0;
+    a {
+      display: block;
+      text-decoration: none;
+      color: $c-pallete1;
+      transition: color 250ms $easeOutExpo;
+      &:hover {
+        color: $c-pallete5;
+        svg path { fill: $c-pallete5; }
+      }
+    }
+    svg {
+      display: inline-block;
+      height: 1.1em;
+
+      position: relative;
+      top: 2px;
+      margin-right: 3px;
+      path {
+        fill: $c-pallete1;
+        transition: fill 250ms $easeOutExpo;
+      }
+    }
   }
 }
 
