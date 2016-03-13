@@ -467,6 +467,51 @@ main.main {
     background: #FFFFFF;
     background: rgba(255, 255, 255, 0.25); }
 
+section.copyright {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 300;
+  text-align: center; }
+  section.copyright p {
+    display: block;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 11px;
+    font-size: .7rem;
+    margin: 0; }
+
+@media screen and (min-width: 1024px) {
+  section.copyright p {
+    padding: 1em 0;
+    font-size: 1rem; } }
+
+@media screen and (min-width: 800px) {
+  #map {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    width: 50%;
+    height: 100%;
+    padding-bottom: 0; }
+    #map:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #000000;
+      background: rgba(0, 0, 0, 0.5);
+      -webkit-transition: background 1s cubic-bezier(0.19, 1, 0.22, 1);
+              transition: background 1s cubic-bezier(0.19, 1, 0.22, 1); }
+    .postcard-flipped #map:after {
+      background: #000000;
+      background: rgba(0, 0, 0, 0.75); } }
+
 .postcard {
   position: absolute;
   top: 50%;
@@ -526,8 +571,8 @@ main.main {
       letter-spacing: .1rem; }
     .postcard .column:nth-child(2) p {
       margin-top: .5em;
-      font-size: 16px;
-      font-size: 1rem; }
+      font-size: 14px;
+      font-size: .9rem; }
 
 @media screen and (max-width: 1023px) {
   .postcard-flipped .postcard {
@@ -579,7 +624,12 @@ main.main {
   }
   .postcard .column:nth-child(2n + 1) {
     clear: left;
-  } }
+  }
+    .postcard .column:nth-child(2) {
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+          -ms-transform: translateY(-50%);
+              transform: translateY(-50%); } }
 
 .row {
   margin-top: 1.5em;
@@ -647,13 +697,16 @@ main.main {
 
 a.flip-button {
   position: absolute;
-  bottom: 0;
-  left: 0;
+  bottom: -16px;
+  bottom: -1rem;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(100%);
+      -ms-transform: translateX(-50%) translateY(100%);
+          transform: translateX(-50%) translateY(100%);
   z-index: 150;
-  width: 100%;
-  padding: 0.25em;
+  padding: 16px;
+  padding: 1rem;
   text-decoration: none;
-  border-radius: 0 0 5px 5px;
   letter-spacing: 1px;
   letter-spacing: .1rem;
   text-align: center;
@@ -661,58 +714,15 @@ a.flip-button {
           transition: all 250ms cubic-bezier(0.19, 1, 0.22, 1); }
   .side-01 a.flip-button {
     color: #fff;
-    background: #B9A895; }
+    background: #3D3C40;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.25); }
     .side-01 a.flip-button:hover {
-      background: #b5a38f; }
+      background: #B9A895; }
   .side-02 a.flip-button {
-    color: #aaa;
-    background: transparent; }
-    .side-02 a.flip-button:hover {
-      color: #ccc; }
-
-@media screen and (min-width: 800px) {
-  #map {
-    position: absolute;
-    top: 0;
-    left: 0;
-    border-radius: 5px 5px 0 0;
-    overflow: hidden;
-    width: 50%;
-    height: 100%;
-    padding-bottom: 0; }
-    #map:after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: #000000;
-      background: rgba(0, 0, 0, 0.5);
-      -webkit-transition: background 1s cubic-bezier(0.19, 1, 0.22, 1);
-              transition: background 1s cubic-bezier(0.19, 1, 0.22, 1); }
-    .postcard-flipped #map:after {
-      background: #000000;
-      background: rgba(0, 0, 0, 0.75); } }
-
-section.copyright {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  z-index: 300;
-  text-align: center; }
-  section.copyright span {
-    display: block;
-    text-transform: uppercase;
-    font-weight: 600;
-    font-size: 11px;
-    font-size: .7rem; }
-
-@media screen and (min-width: 1024px) {
-  section.copyright span {
-    padding: 1em 0;
-    font-size: 1rem; } }
+    color: #3D3C40;
+    font-size: 64px;
+    font-size: 4rem;
+    line-height: 0; }
 
 section.content {
   *zoom: 1;
@@ -801,9 +811,7 @@ svg.foundry-logo {
 section.bgs {
   *zoom: 1;
   position: relative;
-  z-index: 1;
-  -webkit-transition: -webkit-filter ease-out 250ms, filter ease-out 250ms;
-          transition: -webkit-filter ease-out 250ms, filter ease-out 250ms; }
+  z-index: 1; }
 
 section.bgs:before {
   content: '';
@@ -815,8 +823,6 @@ section.bgs:after {
   display: table;
   clear: both;
 }
-  .postcard-flipped section.bgs {
-    -webkit-filter: blur(10px); }
   section.bgs .bg {
     height: 100vh;
     position: relative;
