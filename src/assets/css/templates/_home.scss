@@ -88,13 +88,6 @@ section.bgs {
   z-index: 1;
 
 
-  transition: filter ease-out 250ms;
-
-  .postcard-flipped & {
-    // transform: scale(.95);
-    -webkit-filter: blur(10px);
-  }
-
   .bg {
     // lost-column: 1/2 0 0;
     height: 100vh;

@@ -128,7 +128,8 @@ onWarning = (error) -> handleError.call(this, 'warning', error)
 
 gulp.task 'deploy', ->
   return gulp.src('./dist/**/*')
-    .pipe(ghPages())
+    .pipe ghPages
+      remoteUrl : "https://github.com/taylorkmho/foundryhair-site.git"
 
 gulp.task 'static-files', ->
   gulp.src "#{paths.base.src}/*.*"
