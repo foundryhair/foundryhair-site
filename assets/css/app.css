@@ -444,17 +444,15 @@ main.main {
     left: 0;
     width: 100%;
     height: 100%;
-    background: #FFFFFF;
     background: rgba(255, 255, 255, 0.5);
     z-index: 2; }
 
 .btn-inline {
   display: inline-block;
   padding: 2px 8px;
-  padding: 0.175rem 0.5rem;
+  padding: .175rem .5rem;
   border-radius: 2px 2px 0 0;
   float: right;
-  background: #FFFFFF;
   background: rgba(255, 255, 255, 0.125);
   letter-spacing: 0px;
   letter-spacing: .05rem;
@@ -464,7 +462,6 @@ main.main {
   -webkit-transition: 250ms background cubic-bezier(0.19, 1, 0.22, 1);
           transition: 250ms background cubic-bezier(0.19, 1, 0.22, 1); }
   .btn-inline:hover {
-    background: #FFFFFF;
     background: rgba(255, 255, 255, 0.25); }
 
 section.copyright {
@@ -474,16 +471,15 @@ section.copyright {
   width: 100%;
   z-index: 300;
   text-align: center; }
-  section.copyright p {
+  section.copyright span {
     display: block;
     text-transform: uppercase;
     font-weight: 600;
     font-size: 11px;
-    font-size: .7rem;
-    margin: 0; }
+    font-size: .7rem; }
 
 @media screen and (min-width: 1024px) {
-  section.copyright p {
+  section.copyright span {
     padding: 1em 0;
     font-size: 1rem; } }
 
@@ -504,12 +500,10 @@ section.copyright {
       left: 0;
       width: 100%;
       height: 100%;
-      background: #000000;
       background: rgba(0, 0, 0, 0.5);
       -webkit-transition: background 1s cubic-bezier(0.19, 1, 0.22, 1);
               transition: background 1s cubic-bezier(0.19, 1, 0.22, 1); }
     .postcard-flipped #map:after {
-      background: #000000;
       background: rgba(0, 0, 0, 0.75); } }
 
 .postcard {
@@ -564,8 +558,8 @@ section.copyright {
     .postcard .column:nth-child(1) {
       text-align: center; }
     .postcard .column:nth-child(2) h6 {
-      margin: 0 0 0.25em;
-      padding: 0 0 0.5em;
+      margin: 0 0 .25em;
+      padding: 0 0 .5em;
       border-bottom: rgba(255, 255, 255, 0.125) 1px solid;
       letter-spacing: 1px;
       letter-spacing: .1rem; }
@@ -611,7 +605,7 @@ section.copyright {
 @media screen and (min-width: 1024px) {
   .postcard .column {
     width: calc(99.99% * 1/2 - 2em); }
-  .postcard .column:nth-child(n) {
+  .postcard .column:nth-child(1n) {
     float: left;
     margin-right: 4em;
     clear: none;
@@ -621,6 +615,7 @@ section.copyright {
   }
   .postcard .column:nth-child(2n) {
     margin-right: 0;
+    float: right;
   }
   .postcard .column:nth-child(2n + 1) {
     clear: left;
@@ -628,7 +623,6 @@ section.copyright {
     .postcard .column:nth-child(2) {
       top: 50%;
       -webkit-transform: translateY(-50%);
-          -ms-transform: translateY(-50%);
               transform: translateY(-50%); } }
 
 .row {
@@ -665,7 +659,6 @@ section.copyright {
   position: relative;
   top: 50%;
   -webkit-transform: translateY(-50%);
-      -ms-transform: translateY(-50%);
           transform: translateY(-50%);
   *zoom: 1;
   max-width: 420px;
@@ -701,7 +694,6 @@ a.flip-button {
   bottom: -1rem;
   left: 50%;
   -webkit-transform: translateX(-50%) translateY(100%);
-      -ms-transform: translateX(-50%) translateY(100%);
           transform: translateX(-50%) translateY(100%);
   z-index: 150;
   padding: 16px;
@@ -752,7 +744,6 @@ svg.foundry-logo {
     border-bottom: 2px solid rgba(223, 188, 140, 0.25);
     padding: 0.75em;
     border-radius: 3px 0 3px 0;
-    background: #DFBC8C;
     background: rgba(223, 188, 140, 0.5); }
   svg.foundry-logo path.text-foundry {
     fill: #3D3C40; }
@@ -780,7 +771,6 @@ svg.foundry-logo {
     color: #3D3C40;
     text-decoration: none;
     -webkit-transform: rotate(-15deg) translateY(-50%) scale(2.5);
-        -ms-transform: rotate(-15deg) translateY(-50%) scale(2.5);
             transform: rotate(-15deg) translateY(-50%) scale(2.5);
     -webkit-transition: color 500ms cubic-bezier(0.19, 1, 0.22, 1);
             transition: color 500ms cubic-bezier(0.19, 1, 0.22, 1); }
@@ -793,7 +783,7 @@ svg.foundry-logo {
   line-height: 1.5; }
   .contacts .contact {
     width: 50%; }
-  .contacts .contact:nth-child(n) {
+  .contacts .contact:nth-child(1n) {
   float: left;
   margin-right: 0;
   clear: none;
@@ -803,6 +793,7 @@ svg.foundry-logo {
 }
   .contacts .contact:nth-child(2n) {
   margin-right: 0;
+  float: right;
 }
   .contacts .contact:nth-child(2n + 1) {
   clear: left;
@@ -841,7 +832,7 @@ section.bgs:after {
 @media screen and (min-width: 800px) {
   section.bgs .bg {
     width: 50%; }
-  section.bgs .bg:nth-child(n) {
+  section.bgs .bg:nth-child(1n) {
     float: left;
     margin-right: 0;
     clear: none;
@@ -851,6 +842,7 @@ section.bgs:after {
   }
   section.bgs .bg:nth-child(0n) {
     margin-right: 0;
+    float: right;
   }
   section.bgs .bg:nth-child(0n + 1) {
     clear: left;
@@ -862,7 +854,7 @@ section.bgs:after {
     background-size: cover;
     width: 33.33333%;
     padding-bottom: 33.33333%; }
-  section.bgs .instagram-image:nth-child(n) {
+  section.bgs .instagram-image:nth-child(1n) {
     float: left;
     margin-right: 0;
     clear: none;
@@ -872,6 +864,7 @@ section.bgs:after {
   }
   section.bgs .instagram-image:nth-child(3n) {
     margin-right: 0;
+    float: right;
   }
   section.bgs .instagram-image:nth-child(3n + 1) {
     clear: left;
@@ -881,7 +874,7 @@ section.bgs:after {
   section.bgs .instagram-image {
     width: 25%;
     padding-bottom: 25%; }
-  section.bgs .instagram-image:nth-child(n) {
+  section.bgs .instagram-image:nth-child(1n) {
     float: left;
     margin-right: 0;
     clear: none;
@@ -891,6 +884,7 @@ section.bgs:after {
   }
   section.bgs .instagram-image:nth-child(4n) {
     margin-right: 0;
+    float: right;
   }
   section.bgs .instagram-image:nth-child(4n + 1) {
     clear: left;
@@ -898,7 +892,7 @@ section.bgs:after {
     section.bgs .instagram-image:nth-child(5n-4) {
       width: 50%;
       padding-bottom: 50%; }
-    section.bgs .instagram-image:nth-child(5n-4):nth-child(n) {
+    section.bgs .instagram-image:nth-child(5n-4):nth-child(1n) {
     float: left;
     margin-right: 0;
     clear: none;
@@ -908,13 +902,14 @@ section.bgs:after {
   }
     section.bgs .instagram-image:nth-child(5n-4):nth-child(5n) {
     margin-right: 0;
+    float: right;
   }
     section.bgs .instagram-image:nth-child(5n-4):nth-child(5n + 1) {
     clear: left;
   }
     section.bgs .instagram-image:nth-child(5n-3), section.bgs .instagram-image:nth-child(5n-2), section.bgs .instagram-image:nth-child(5n-1), section.bgs .instagram-image:nth-child(5n) {
       width: 25%; }
-    section.bgs .instagram-image:nth-child(5n-3):nth-child(n), section.bgs .instagram-image:nth-child(5n-2):nth-child(n), section.bgs .instagram-image:nth-child(5n-1):nth-child(n), section.bgs .instagram-image:nth-child(5n):nth-child(n) {
+    section.bgs .instagram-image:nth-child(5n-3):nth-child(1n), section.bgs .instagram-image:nth-child(5n-2):nth-child(1n), section.bgs .instagram-image:nth-child(5n-1):nth-child(1n), section.bgs .instagram-image:nth-child(5n):nth-child(1n) {
     float: left;
     margin-right: 0;
     clear: none;
@@ -924,6 +919,7 @@ section.bgs:after {
   }
     section.bgs .instagram-image:nth-child(5n-3):nth-child(5n), section.bgs .instagram-image:nth-child(5n-2):nth-child(5n), section.bgs .instagram-image:nth-child(5n-1):nth-child(5n), section.bgs .instagram-image:nth-child(5n):nth-child(5n) {
     margin-right: 0;
+    float: right;
   }
     section.bgs .instagram-image:nth-child(5n-3):nth-child(5n + 1), section.bgs .instagram-image:nth-child(5n-2):nth-child(5n + 1), section.bgs .instagram-image:nth-child(5n-1):nth-child(5n + 1), section.bgs .instagram-image:nth-child(5n):nth-child(5n + 1) {
     clear: left;
