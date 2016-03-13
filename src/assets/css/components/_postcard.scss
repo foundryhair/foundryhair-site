@@ -117,8 +117,20 @@
   .postcard {
     .column {
       lost-column: 1/2 2 ($column-gutter*4);
+      &:nth-child(2) {
+        top: 50%;
+        transform: translateY(-50%);
+      }
     }
   }
+  // .postcard-flipped .postcard {
+  //   .column {
+  //     &:nth-child(2) {
+  //       top: 50%;
+  //       transform: translateY(-50%);
+  //     }
+  //   }
+  // }
 }
 
 .row {
@@ -183,29 +195,31 @@
 
 a.flip-button {
   position: absolute;
-  bottom: 0;
-  left: 0;
+  bottom: -1rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(100%);
+
   z-index: ($base-zindex + 50);
-  width: 100%;
-  padding: ($column-gutter/4);
+  padding: 1rem;
   text-decoration: none;
-  border-radius: 0 0 5px 5px;
   letter-spacing: .1rem;
   text-align: center;
   transition: all 250ms $easeOutExpo;
   .side-01 & {
     color: #fff;
-    background: $c-pallete3;
+    background: $c-pallete1;
+    box-shadow: 2px 0 5px rgba(#000,.25);
     &:hover {
-      // color: $c-pallete1;
-      background: darken($c-pallete3,2%);
+      background: $c-pallete3;
     }
   }
   .side-02 & {
-    color: #aaa;
-    background: transparent;
-    &:hover {
-      color: #ccc;
-    }
+    color: $c-pallete1;
+    font-size: 4rem;
+    line-height: 0;
+    // background: transparent;
+    // &:hover {
+    //   color: #ccc;
+    // }
   }
 }
