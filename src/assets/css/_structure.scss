@@ -1,5 +1,7 @@
-main.main {
-  @include overlayColor(#fff, .5);
+@media screen and (min-width: $mq-small) {
+  main.main {
+    @include overlayColor(#fff, .5);
+  }
 }
 
 .btn {
