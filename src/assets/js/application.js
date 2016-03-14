@@ -20,5 +20,9 @@ $(function(){
     });
   }
 
+});
 
+var bLazy = new Blazy({
+  selector: '.lazyloaded',
+  errorClass: 'lazyloaded-error'
 });

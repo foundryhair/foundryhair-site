@@ -19,7 +19,7 @@
     "jquery": "~2.1.4",
     "modernizr": "~2.8.3",
     "normalize.css": "~3.0.3",
-    "gsap": "^1.18.2"
+    "bLazy": "blazy#^1.5.4"
   },
   "overrides": {
     "modernizr": {
