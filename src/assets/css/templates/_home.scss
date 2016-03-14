@@ -95,6 +95,10 @@ svg.foundry-logo {
   line-height: 1.5;
   .contact {
     lost-column: 1/2 2 0;
+    a {
+      color: $c-pallete1;
+      text-decoration: none;
+    }
   }
 }
 
@@ -126,7 +130,7 @@ section.bgs {
   }
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: $mq-small) {
   section.bgs {
     .bg {
       lost-column: 1/2 0 0;

@@ -1,12 +1,14 @@
-$column-gutter:      1em;
-$row-width:          420px;
+$column-gutter:         1em;
+$row-width:             420px;
 
-$base-zindex:        100;
+$base-zindex:           100;
 
-$easeOutExpo:        cubic-bezier(0.19, 1, 0.22, 1);
+$easeOutExpo:           cubic-bezier(0.19, 1, 0.22, 1);
 
-$body-font-family:   "Lato", "Helvetica Neue", sans-serif;
-$script-font-family: "Dancing Script", cursive;
+$body-font-family:      "Lato", "Helvetica Neue", sans-serif;
+$script-font-family:    "Dancing Script", cursive;
+
+$mq-small:              800px;
 
 $c-pallete1:            #3D3C40;
 $c-pallete2:            #DFBC8C;

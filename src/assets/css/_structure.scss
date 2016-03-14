@@ -21,3 +21,9 @@ main.main {
     background: rgba(#fff, .25);
   }
 }
+
+@media screen and (min-width: $mq-small) {
+  a[href*="tel:"] {
+    pointer-events: none;
+  }
+}
