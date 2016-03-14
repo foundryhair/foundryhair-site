@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:400");
+@import url("https://fonts.googleapis.com/css?family=Dancing+Script");
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
 /**
@@ -426,7 +428,7 @@ th {
   box-sizing: border-box; }
 
 body {
-  font-family: "brandon-grotesque", sans-serif;
+  font-family: "Lato", "Helvetica Neue", sans-serif;
   font-weight: 200;
   font-size: 80%;
   color: #3D3C40; }
@@ -580,11 +582,11 @@ section.copyright {
       -webkit-transform: rotateX(-180deg);
               transform: rotateX(-180deg);
       *zoom: 1; }
-    .postcard-flipped .postcard .container:before {
+    .postcard-flipped .postcard .container:before{
     content: '';
     display: table;
   }
-    .postcard-flipped .postcard .container:after {
+    .postcard-flipped .postcard .container:after{
     content: '';
     display: table;
     clear: both;
@@ -605,19 +607,19 @@ section.copyright {
 @media screen and (min-width: 1024px) {
   .postcard .column {
     width: calc(99.99% * 1/2 - 2em); }
-  .postcard .column:nth-child(1n) {
+  .postcard .column:nth-child(1n){
     float: left;
     margin-right: 4em;
     clear: none;
   }
-  .postcard .column:last-child {
+  .postcard .column:last-child{
     margin-right: 0;
   }
-  .postcard .column:nth-child(2n) {
+  .postcard .column:nth-child(2n){
     margin-right: 0;
     float: right;
   }
-  .postcard .column:nth-child(2n + 1) {
+  .postcard .column:nth-child(2n + 1){
     clear: left;
   }
     .postcard .column:nth-child(2) {
@@ -665,12 +667,12 @@ section.copyright {
   margin-left: auto;
   margin-right: auto; }
 
-.centered:before {
+.centered:before{
   content: '';
   display: table;
 }
 
-.centered:after {
+.centered:after{
   content: '';
   display: table;
   clear: both;
@@ -721,12 +723,12 @@ section.content {
   -webkit-transition: width 500ms cubic-bezier(0.19, 1, 0.22, 1);
           transition: width 500ms cubic-bezier(0.19, 1, 0.22, 1); }
 
-section.content:before {
+section.content:before{
   content: '';
   display: table;
 }
 
-section.content:after {
+section.content:after{
   content: '';
   display: table;
   clear: both;
@@ -754,7 +756,8 @@ svg.foundry-logo {
   position: relative;
   border-top: 1px solid #D2D0C7;
   border-bottom: 1px solid #D2D0C7;
-  margin: 4em auto 6em; }
+  margin: 4em auto 6em;
+  height: 3em; }
   .ruled-cta:after {
     content: "";
     position: absolute;
@@ -766,16 +769,34 @@ svg.foundry-logo {
     background-size: 100% 100%;
     opacity: .45; }
   .ruled-cta a {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translateY(-50%) translateX(-50%) scale(0.975);
+            transform: translateY(-50%) translateX(-50%) scale(0.975);
     display: inline-block;
-    font: 1.75em/.5 "lakeside", sans-serif;
-    color: #3D3C40;
-    text-decoration: none;
-    -webkit-transform: rotate(-15deg) translateY(-50%) scale(2.5);
-            transform: rotate(-15deg) translateY(-50%) scale(2.5);
-    -webkit-transition: color 500ms cubic-bezier(0.19, 1, 0.22, 1);
-            transition: color 500ms cubic-bezier(0.19, 1, 0.22, 1); }
+    background-size: 100% 100%;
+    width: 240px;
+    height: 140px;
+    background-position: center center;
+    color: transparent;
+    -webkit-transition: -webkit-transform 500ms cubic-bezier(0.19, 1, 0.22, 1);
+            transition: transform 500ms cubic-bezier(0.19, 1, 0.22, 1);
+    -webkit-backface-visibility: hidden; }
     .ruled-cta a:hover {
-      color: #636167; }
+      -webkit-transform: translateY(-50%) translateX(-50%) rotate(-1deg) scale(1);
+              transform: translateY(-50%) translateX(-50%) rotate(-1deg) scale(1); }
+    .ruled-cta a.lazyloaded-error {
+      height: auto;
+      width: auto;
+      color: #3D3C40;
+      font: 48px/1 "Dancing Script", cursive;
+      font: 3rem/1 "Dancing Script", cursive;
+      text-decoration: none;
+      -webkit-transition: color 500ms cubic-bezier(0.19, 1, 0.22, 1);
+              transition: color 500ms cubic-bezier(0.19, 1, 0.22, 1);
+      -webkit-transform: translateY(-60%) translateX(-50%) rotate(-15deg);
+              transform: translateY(-60%) translateX(-50%) rotate(-15deg); }
 
 .contacts {
   text-transform: uppercase;
@@ -783,19 +804,19 @@ svg.foundry-logo {
   line-height: 1.5; }
   .contacts .contact {
     width: 50%; }
-  .contacts .contact:nth-child(1n) {
+  .contacts .contact:nth-child(1n){
   float: left;
   margin-right: 0;
   clear: none;
 }
-  .contacts .contact:last-child {
+  .contacts .contact:last-child{
   margin-right: 0;
 }
-  .contacts .contact:nth-child(2n) {
+  .contacts .contact:nth-child(2n){
   margin-right: 0;
   float: right;
 }
-  .contacts .contact:nth-child(2n + 1) {
+  .contacts .contact:nth-child(2n + 1){
   clear: left;
 }
 
@@ -804,12 +825,12 @@ section.bgs {
   position: relative;
   z-index: 1; }
 
-section.bgs:before {
+section.bgs:before{
   content: '';
   display: table;
 }
 
-section.bgs:after {
+section.bgs:after{
   content: '';
   display: table;
   clear: both;
@@ -832,19 +853,19 @@ section.bgs:after {
 @media screen and (min-width: 800px) {
   section.bgs .bg {
     width: 50%; }
-  section.bgs .bg:nth-child(1n) {
+  section.bgs .bg:nth-child(1n){
     float: left;
     margin-right: 0;
     clear: none;
   }
-  section.bgs .bg:last-child {
+  section.bgs .bg:last-child{
     margin-right: 0;
   }
-  section.bgs .bg:nth-child(0n) {
+  section.bgs .bg:nth-child(0n){
     margin-right: 0;
     float: right;
   }
-  section.bgs .bg:nth-child(0n + 1) {
+  section.bgs .bg:nth-child(0n + 1){
     clear: left;
   }
   section.bgs #instagram-feed {
@@ -854,19 +875,19 @@ section.bgs:after {
     background-size: cover;
     width: 33.33333%;
     padding-bottom: 33.33333%; }
-  section.bgs .instagram-image:nth-child(1n) {
+  section.bgs .instagram-image:nth-child(1n){
     float: left;
     margin-right: 0;
     clear: none;
   }
-  section.bgs .instagram-image:last-child {
+  section.bgs .instagram-image:last-child{
     margin-right: 0;
   }
-  section.bgs .instagram-image:nth-child(3n) {
+  section.bgs .instagram-image:nth-child(3n){
     margin-right: 0;
     float: right;
   }
-  section.bgs .instagram-image:nth-child(3n + 1) {
+  section.bgs .instagram-image:nth-child(3n + 1){
     clear: left;
   } }
 
@@ -874,54 +895,54 @@ section.bgs:after {
   section.bgs .instagram-image {
     width: 25%;
     padding-bottom: 25%; }
-  section.bgs .instagram-image:nth-child(1n) {
+  section.bgs .instagram-image:nth-child(1n){
     float: left;
     margin-right: 0;
     clear: none;
   }
-  section.bgs .instagram-image:last-child {
+  section.bgs .instagram-image:last-child{
     margin-right: 0;
   }
-  section.bgs .instagram-image:nth-child(4n) {
+  section.bgs .instagram-image:nth-child(4n){
     margin-right: 0;
     float: right;
   }
-  section.bgs .instagram-image:nth-child(4n + 1) {
+  section.bgs .instagram-image:nth-child(4n + 1){
     clear: left;
   }
     section.bgs .instagram-image:nth-child(5n-4) {
       width: 50%;
       padding-bottom: 50%; }
-    section.bgs .instagram-image:nth-child(5n-4):nth-child(1n) {
+    section.bgs .instagram-image:nth-child(5n-4):nth-child(1n){
     float: left;
     margin-right: 0;
     clear: none;
   }
-    section.bgs .instagram-image:nth-child(5n-4):last-child {
+    section.bgs .instagram-image:nth-child(5n-4):last-child{
     margin-right: 0;
   }
-    section.bgs .instagram-image:nth-child(5n-4):nth-child(5n) {
+    section.bgs .instagram-image:nth-child(5n-4):nth-child(5n){
     margin-right: 0;
     float: right;
   }
-    section.bgs .instagram-image:nth-child(5n-4):nth-child(5n + 1) {
+    section.bgs .instagram-image:nth-child(5n-4):nth-child(5n + 1){
     clear: left;
   }
     section.bgs .instagram-image:nth-child(5n-3), section.bgs .instagram-image:nth-child(5n-2), section.bgs .instagram-image:nth-child(5n-1), section.bgs .instagram-image:nth-child(5n) {
       width: 25%; }
-    section.bgs .instagram-image:nth-child(5n-3):nth-child(1n), section.bgs .instagram-image:nth-child(5n-2):nth-child(1n), section.bgs .instagram-image:nth-child(5n-1):nth-child(1n), section.bgs .instagram-image:nth-child(5n):nth-child(1n) {
+    section.bgs .instagram-image:nth-child(5n-3):nth-child(1n), section.bgs .instagram-image:nth-child(5n-2):nth-child(1n), section.bgs .instagram-image:nth-child(5n-1):nth-child(1n), section.bgs .instagram-image:nth-child(5n):nth-child(1n){
     float: left;
     margin-right: 0;
     clear: none;
   }
-    section.bgs .instagram-image:nth-child(5n-3):last-child, section.bgs .instagram-image:nth-child(5n-2):last-child, section.bgs .instagram-image:nth-child(5n-1):last-child, section.bgs .instagram-image:nth-child(5n):last-child {
+    section.bgs .instagram-image:nth-child(5n-3):last-child, section.bgs .instagram-image:nth-child(5n-2):last-child, section.bgs .instagram-image:nth-child(5n-1):last-child, section.bgs .instagram-image:nth-child(5n):last-child{
     margin-right: 0;
   }
-    section.bgs .instagram-image:nth-child(5n-3):nth-child(5n), section.bgs .instagram-image:nth-child(5n-2):nth-child(5n), section.bgs .instagram-image:nth-child(5n-1):nth-child(5n), section.bgs .instagram-image:nth-child(5n):nth-child(5n) {
+    section.bgs .instagram-image:nth-child(5n-3):nth-child(5n), section.bgs .instagram-image:nth-child(5n-2):nth-child(5n), section.bgs .instagram-image:nth-child(5n-1):nth-child(5n), section.bgs .instagram-image:nth-child(5n):nth-child(5n){
     margin-right: 0;
     float: right;
   }
-    section.bgs .instagram-image:nth-child(5n-3):nth-child(5n + 1), section.bgs .instagram-image:nth-child(5n-2):nth-child(5n + 1), section.bgs .instagram-image:nth-child(5n-1):nth-child(5n + 1), section.bgs .instagram-image:nth-child(5n):nth-child(5n + 1) {
+    section.bgs .instagram-image:nth-child(5n-3):nth-child(5n + 1), section.bgs .instagram-image:nth-child(5n-2):nth-child(5n + 1), section.bgs .instagram-image:nth-child(5n-1):nth-child(5n + 1), section.bgs .instagram-image:nth-child(5n):nth-child(5n + 1){
     clear: left;
   } }
 
