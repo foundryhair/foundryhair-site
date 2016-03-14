@@ -78,14 +78,52 @@ svg.foundry-logo {
 .contacts {
   lost-utility: clearfix;
   text-transform: uppercase;
-  font-size: .9em;
   line-height: 1.5;
+  font-size: 1.1rem;
   .contact {
-    lost-column: 1/2 2 0;
+    margin-bottom: $column-gutter;
     a {
       color: $c-pallete1;
       text-decoration: none;
     }
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+}
+
+@media screen and (min-width: $mq-small) {
+  .contacts {
+    font-size: .9em;
+    .contact {
+      lost-column: 1/2 2 0;
+    }
+  }
+}
+
+.social--mobile {
+  list-style: none;
+  margin: $column-gutter 0 ($column-gutter*2);
+  padding: 0;
+  li {
+    display: inline-block;
+    margin-right: ($column-gutter*1.5);
+
+  }
+  img, svg {
+    height: 1.25rem;
+    width: auto;
+  }
+  svg {
+    path {
+      fill: #fff;
+    }
+  }
+}
+
+@media screen and (min-width: $mq-small) {
+  .social--mobile {
+    display: none;
   }
 }
 
