@@ -14,30 +14,29 @@ block content
             .contacts
               .contact PH: <a href="tel:8086007539">(808) 600-7539</a><br>9AM - 6PM
               .contact 418A Kuulei Rd, Unit C<br>Kailua, HI 96734
-          a.flip-button(href="#") ABOUT US
+          a.btn.btn--flip(href="#" data-action="flip") ABOUT US
         .side.side-02
           .column
             include ../assets/images/foundry-logo.svg
             .row
-              p PH: <a href="tel:8086007539">(808) 600-7539</a>
-              a(href="mailto:mbhairhnl@gmail.com") MBHAIRHNL@GMAIL.COM
+              p
+                | <a href="tel:8086007539">(808) 600-7539</a><br>
+                | <a href="mailto:mbhairhnl@gmail.com">MBHAIRHNL@GMAIL.COM</a><br>
+                a(href="http://instagram.com/foundryco.op" target="_blank")
+                  include ../assets/images/icon-instagram.svg
+                  | @FOUNDRYCO.OP
             .row
               p 9AM - 6PM
-            .row
               p 418A KUULEI RD, UNIT C<br>KAILUA, HI 96734
-            .row
-              a(href="http://instagram.com/foundryco.op" target="_blank")
-                include ../assets/images/icon-instagram.svg
-                | FOUNDRYCO.OP
-          .column
-            h6 ABOUT US
-            //- <a class="btn-inline" href="https://www.styleseat.com/mbhair#carousel" target="_blank">Services/Prices</a>
-            p A modern oasis boutique salon tucked away in the heart of Kailua, The Foundry is dedicated to providing quality and experience. We pride ourselves in creating the ultimate contemporary, on trend look that compliments each as an individual.
-          a.flip-button(href="#") &times;
-          #map(data-lat="21.395719" data-lng="-157.742035")
 
-  section.copyright
-    span © 2015 Foundry Salon & Cooperative
+            .row
+              a.btn.btn--book-small(href="https://www.styleseat.com/mbhair" target="_blank") BOOK <img src="assets/images/logo-styleseat--light.png">
+          .column
+            h6 ABOUT FOUNDRY
+            p A modern oasis boutique salon tucked away in the heart of Kailua, The Foundry is dedicated to providing quality and experience. We pride ourselves in creating the ultimate contemporary, on trend look that compliments each as an individual.
+            p.copyright &copy; 2015 - 2016
+          a.btn.btn--flip(href="#" data-action="flip") &times;
+          #map(data-lat="21.395719" data-lng="-157.742035")
 
   section.bgs
     .bg

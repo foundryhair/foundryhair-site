@@ -3,7 +3,7 @@ $(function(){
   /*
     FLIP BUTTON CONTROLS
   */
-  $('.flip-button').on('click', function(e) {
+  $('[data-action="flip"]').on('click', function(e) {
     e.preventDefault();
     $('body').toggleClass('postcard-flipped');
   });
