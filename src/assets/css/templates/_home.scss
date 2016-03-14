@@ -9,36 +9,11 @@ section.content {
 svg.foundry-logo {
   display: block;
   width: 100%;
-  // margin: 0 auto;
-  .side-01 & { padding: 0 ($column-gutter*2); }
-  .side-02 & {
-    margin: 0 auto;
-    width: 50%;
-    // border-left: 2px solid rgba($c-pallete2, .5);
-    border-right: 2px solid rgba($c-pallete2, .25);
-    border-bottom: 2px solid rgba($c-pallete2, .25);
-    padding: ($column-gutter*.75);
-    border-radius: 3px 0 3px 0;
-    background: rgba($c-pallete2, .5);
-  }
   path {
     &.text-foundry { fill: $c-pallete1; }
     &.text-salon-coop { fill: lighten(desaturate($c-pallete2,20%),3%); }
   }
 }
-
-@media screen and (min-width: 1024px) {
-  svg.foundry-logo {
-    // max-width: 420px;
-  }
-}
-
-// h2.tagline {
-//   margin-top: $column-gutter;
-//   margin-bottom: 0;
-//   color: #999;
-//   font-weight: 200;
-// }
 
 .ruled-cta {
   position: relative;
@@ -90,6 +65,7 @@ svg.foundry-logo {
 }
 
 .contacts {
+  lost-utility: clearfix;
   text-transform: uppercase;
   font-size: .9em;
   line-height: 1.5;
@@ -102,39 +78,29 @@ svg.foundry-logo {
   }
 }
 
-section.bgs {
-  lost-utility: clearfix;
-
-  position: relative;
-  z-index: 1;
-
-
-  .bg {
-    // lost-column: 1/2 0 0;
-    height: 100vh;
-    position: relative;
-    overflow: hidden;
-  }
-  .full-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
-  #instagram-feed {
-    display: none;
-  }
-}
-
 @media screen and (min-width: $mq-small) {
   section.bgs {
+    lost-utility: clearfix;
+
+    position: relative;
+    z-index: 1;
+    .full-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
     .bg {
+      position: relative;
+      overflow: hidden;
+      height: 100vh;
       lost-column: 1/2 0 0;
     }
+
     #instagram-feed {
       display: block;
     }

@@ -1,61 +1,5 @@
 .postcard {
   position: relative;
-  .column {
-    position: relative;
-    z-index: ($base-zindex + 50);
-
-    .foundry-logo path { fill: #fff; }
-
-    &:nth-child(1) {
-      text-align: center;
-    }
-    &:nth-child(2) {
-      h6 {
-        margin: 0 0 .25em;
-        padding: 0 0 .5em;
-        border-bottom: rgba(#fff,.125) 1px solid;
-        letter-spacing: .1rem;
-      }
-      p {
-        margin-top: .5em;
-        font-size: .9rem;
-      }
-    }
-  }
-}
-
-@media screen and (max-width: $mq-small) {
-  .postcard-flipped .postcard {
-    position: absolute;
-    // top: 2.5%;
-    // transform: translate3d(-50%, 0, 0);
-    // height: 90%;
-    // max-height: none;
-    .container {
-      // transform: rotateX(-180deg);
-      lost-utility: clearfix;
-    }
-    .side {
-      overflow: scroll;
-      -webkit-overflow-scrolling: touch;
-    }
-    svg.foundry-logo {
-      margin-top: 1rem;
-      margin-bottom: 1rem;
-    }
-    a.btn--flip {
-      bottom: initial;
-      top: 0;
-    }
-    .column {
-      &:nth-child(2) {
-        h6 {
-          margin: 3em 0 1em;
-          padding: 0 0 1em;
-        }
-      }
-    }
-  }
 }
 
 @media screen and (min-width: $mq-small) {
@@ -70,6 +14,8 @@
     width: 90%;
     max-height: 500px;
     height: 85%;
+    width: 700px;
+    height: 480px;
 
     perspective: 1000;
 
@@ -88,14 +34,68 @@
       transition: 1.25s $easeOutExpo;
       transform-style: preserve-3d;
     }
-    width: 700px;
-    height: 480px;
-    .column {
-      lost-column: 1/2 2 ($column-gutter*4);
-      &:nth-child(2) {
-        top: 50%;
-        transform: translateY(-50%);
+
+  }
+}
+
+.side {
+  line-height: 1.5;
+
+  padding: ($column-gutter*2);
+
+  &-01 {
+    background: #fff;
+    text-align: center;
+    .foundry-logo {
+      padding: 0 ($column-gutter*2);
+    }
+  }
+  &-02 {
+    background: $c-pallete1;
+    color: #fff;
+    a {
+      text-decoration: none;
+      color: #eee;
+    }
+    .foundry-logo {
+      margin: 0 auto;
+      width: 50%;
+
+      border-right: 2px solid rgba($c-pallete2, .25);
+      border-bottom: 2px solid rgba($c-pallete2, .25);
+      padding: ($column-gutter*.75);
+      border-radius: 3px 0 3px 0;
+      background: rgba($c-pallete2, .5);
+    }
+  }
+}
+
+@media screen and (min-width: $mq-small) {
+  .side {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 5px;
+    box-shadow: 0 2px 3px 1px rgba(#000,.1);
+    &__content {
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+      lost-center: $row-width;
+      h1 {
+        margin: 0;
       }
+    }
+    &-01 {
+      z-index: 2;
+      transform: rotateX(0deg);
+    }
+    &-02 {
+      z-index: 1;
+      transform: rotateX(180deg);
     }
   }
 }
@@ -124,51 +124,46 @@
   }
 }
 
-.side {
-  border-radius: 5px;
-  line-height: 1.5;
+.column {
+  position: relative;
+  z-index: ($base-zindex + 50);
 
-  padding: ($column-gutter*2);
-  box-shadow: 0 2px 3px 1px rgba(#000,.1);
-
-  &-01 {
-    background: #fff;
-    text-align: center;
+  .foundry-logo path {
+    fill: #fff;
   }
-  &-02 {
-    background: $c-pallete1;
-    color: #fff;
-    a {
-      text-decoration: none;
-      color: #eee;
+
+  &:nth-child(1) {
+    display: none;
+  }
+  &:nth-child(2) {
+    h6 {
+      margin: 0 0 .25em;
+      padding: 0 0 .5em;
+      border-bottom: rgba(#fff,.125) 1px solid;
+      letter-spacing: .1rem;
+    }
+    p {
+      &.lead {
+        font-size: 1.5rem;
+        line-height: 1.25;
+        font-weight: 300;
+      }
+      margin-top: .5em;
+      font-size: .9rem;
     }
   }
 }
 
 @media screen and (min-width: $mq-small) {
-  .side {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    &__content {
-      position: relative;
+  .column {
+    lost-column: 1/2 2 ($column-gutter*4);
+    &:nth-child(1) {
+      display: inline-block;
+      text-align: center;
+    }
+    &:nth-child(2) {
       top: 50%;
       transform: translateY(-50%);
-      lost-center: $row-width;
-      h1 {
-        margin: 0;
-      }
-    }
-    &-01 {
-      z-index: 2;
-      transform: rotateX(0deg);
-    }
-    &-02 {
-      z-index: 1;
-      transform: rotateX(180deg);
     }
   }
 }

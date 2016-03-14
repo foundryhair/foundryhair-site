@@ -1,3 +1,7 @@
+body {
+  background: #3D3C40;
+}
+
 @media screen and (min-width: $mq-small) {
   main.main {
     @include overlayColor(#fff, .5);
@@ -35,39 +39,41 @@
     }
   }
   &--flip {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-
-    z-index: ($base-zindex + 50);
-    padding: 1rem;
-    text-decoration: none;
-    letter-spacing: .1rem;
-    text-align: center;
-    transition: all 250ms $easeOutExpo;
-    .side-01 & {
-      bottom: 0;
-      color: #fff;
-      background: $c-pallete1;
-      box-shadow: 2px 0 5px rgba(#000,.25);
-      &:hover {
-        background: darken($c-pallete1, 5%);
-      }
-    }
-    .side-02 & {
-      color: $c-pallete1;
-      font-size: 4rem;
-      line-height: 0;
-      &:hover {
-        color: lighten($c-pallete1, 5%);
-      }
-    }
+    display: none;
   }
 }
 
 @media screen and (min-width: $mq-small) {
   .btn {
     &--flip {
+      display: inline-block;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+
+      z-index: ($base-zindex + 50);
+      padding: 1rem;
+      text-decoration: none;
+      letter-spacing: .1rem;
+      text-align: center;
+      transition: all 250ms $easeOutExpo;
+      .side-01 & {
+        bottom: 0;
+        color: #fff;
+        background: $c-pallete1;
+        box-shadow: 2px 0 5px rgba(#000,.25);
+        &:hover {
+          background: darken($c-pallete1, 5%);
+        }
+      }
+      .side-02 & {
+        color: $c-pallete1;
+        font-size: 4rem;
+        line-height: 0;
+        &:hover {
+          color: lighten($c-pallete1, 5%);
+        }
+      }
       transform: translateX(-50%) translateY(100%);
       .side-01 & {
         bottom: -1rem;
