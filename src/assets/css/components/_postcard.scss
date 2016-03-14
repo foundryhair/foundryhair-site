@@ -168,6 +168,8 @@
 @media screen and (min-width: $mq-small) {
   .column {
     lost-column: 1/2 2 ($column-gutter*4);
+    top: 50%;
+    transform: translateY(-50%);
     &__header {
       &--mobile {
         display: none;
@@ -178,8 +180,8 @@
       text-align: center;
     }
     &:nth-child(2) {
-      top: 50%;
-      transform: translateY(-50%);
+      // top: 50%;
+      // transform: translateY(-50%);
     }
   }
 }
