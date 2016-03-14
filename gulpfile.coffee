@@ -127,7 +127,7 @@ onWarning = (error) -> handleError.call(this, 'warning', error)
 ######################
 
 gulp.task 'deploy', ->
-  return gulp.src('./dist/**/*')
+  gulp.src('./dist/**/*')
     .pipe ghPages
       remoteUrl : "https://github.com/taylorkmho/foundryhair-site.git"
 
