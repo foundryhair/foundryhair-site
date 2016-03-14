@@ -47,7 +47,8 @@
     background: #fff;
     text-align: center;
     .foundry-logo {
-      padding: 0 ($column-gutter*2);
+      max-width: 200px;
+      margin: 0 auto;
     }
   }
   &-02 {
@@ -92,6 +93,11 @@
     &-01 {
       z-index: 2;
       transform: rotateX(0deg);
+      .foundry-logo {
+        max-width: none;
+        padding: 0 2rem;
+        margin: 0 auto;
+      }
     }
     &-02 {
       z-index: 1;
