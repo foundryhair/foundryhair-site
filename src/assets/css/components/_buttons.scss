@@ -1,0 +1,19 @@
+.btn {
+  text-decoration: none;
+  &--cta {
+    display: block;
+    min-width: 10rem;
+    padding: $column-gutter;
+    border: 2px solid lighten($c-pallete1, 72.5%);
+    color: $c-pallete1;
+    font-weight: 600;
+    font-size: .65rem;
+    letter-spacing: .05rem;
+    text-transform: uppercase;
+    border-radius: 4px;
+    transition: 250ms $easeOutExpo background;
+    &:hover {
+      background-color: lighten($c-pallete1, 72.5%);
+    }
+  }
+}
