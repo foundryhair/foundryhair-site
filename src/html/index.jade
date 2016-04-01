@@ -4,17 +4,26 @@ block content
 
   section.content
     .postcard
-      .container
+      .postcard__content
+        include ../assets/images/foundry-logo.svg
+        //- h2.tagline salon cooperative + creative space
+        .ruled-cta
+          a.ruled-cta__link(href="https://www.styleseat.com/mbhair" target="_blank" class="lazyloaded" data-src="assets/images/book.gif") Book an<br>appointment!
+        .contacts
+          .contact 9AM - 6PM<br><a href="tel:8086007539">(808) 600-7539</a>
+          .contact 418A Kuulei Rd, Unit C<br>Kailua, HI 96734
+      //- a.btn.btn--flip(href="#" data-action="flip") ABOUT US
+      //- .container
         .side.side-01
-          .side__content
-            include ../assets/images/foundry-logo.svg
-            //- h2.tagline salon cooperative + creative space
-            .ruled-cta
-              a.ruled-cta__link(href="https://www.styleseat.com/mbhair" target="_blank" class="lazyloaded" data-src="assets/images/book.gif") Book an<br>appointment!
-            .contacts
-              .contact 9AM - 6PM<br><a href="tel:8086007539">(808) 600-7539</a>
-              .contact 418A Kuulei Rd, Unit C<br>Kailua, HI 96734
-          a.btn.btn--flip(href="#" data-action="flip") ABOUT US
+          //- .side__content
+          //-   include ../assets/images/foundry-logo.svg
+          //-   //- h2.tagline salon cooperative + creative space
+          //-   .ruled-cta
+          //-     a.ruled-cta__link(href="https://www.styleseat.com/mbhair" target="_blank" class="lazyloaded" data-src="assets/images/book.gif") Book an<br>appointment!
+          //-   .contacts
+          //-     .contact 9AM - 6PM<br><a href="tel:8086007539">(808) 600-7539</a>
+          //-     .contact 418A Kuulei Rd, Unit C<br>Kailua, HI 96734
+          //- a.btn.btn--flip(href="#" data-action="flip") ABOUT US
         .instagram-feed.instagram-feed--mobile
         .side.side-02
           .column

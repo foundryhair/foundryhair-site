@@ -1,5 +1,9 @@
 .postcard {
   position: relative;
+  background-color: #fff;
+  padding: ($column-gutter*4) $column-gutter;
+  line-height: 1.5;
+  text-align: center;
 }
 
 @media screen and (min-width: $mq-small) {
@@ -9,48 +13,36 @@
     left: 50%;
     transform: translate3d(-50%, -50%, 0);
     z-index: $base-zindex;
-    // margin: 0 auto;
-
-    width: 90%;
-    max-height: 500px;
-    height: 85%;
     width: 700px;
-    height: 480px;
+    padding: ($column-gutter*2);
+    border-radius: 4px;
+    box-shadow: 0 2px 3px 1px rgba(#000,.1);
 
-    perspective: 1000;
-
-    .postcard-flipped & {
-      .container {
-        transform: rotateX(-180deg);
-      }
+    &__content {
+      lost-center: $row-width;
     }
+  }
+}
 
-    .container {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      transition: 1.25s $easeOutExpo;
-      transform-style: preserve-3d;
-    }
+.foundry-logo {
+  max-width: 200px;
+  margin: 0 auto;
+}
 
+@media screen and (min-width: $mq-small) {
+  .foundry-logo {
+    max-width: none;
+    padding: 0 2rem;
   }
 }
 
 .side {
-  line-height: 1.5;
 
   padding: ($column-gutter*2);
 
   &-01 {
     background: #fff;
     padding: ($column-gutter*6) ($column-gutter*2);
-    text-align: center;
-    .foundry-logo {
-      max-width: 200px;
-      margin: 0 auto;
-    }
   }
   &-02 {
     background: $c-pallete1;
@@ -80,8 +72,6 @@
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
-    border-radius: 5px;
-    box-shadow: 0 2px 3px 1px rgba(#000,.1);
     &__content {
       position: relative;
       top: 50%;

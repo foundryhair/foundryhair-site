@@ -23,18 +23,6 @@ svg.foundry-logo {
   margin: ($column-gutter*4) auto ($column-gutter*6);
   height: ($column-gutter*2);
 
-  &:after {
-    content: "";
-    position: absolute;
-    bottom: -100%;
-    right: 0;
-    height: 1.25em;
-    width: 7.375em;
-    background-image: url('../images/logo-styleseat.png');
-    background-size: 100% 100%;
-    opacity: .45;
-  }
-
   &__link {
     position: absolute;
     top: 50%;
@@ -79,7 +67,7 @@ svg.foundry-logo {
   lost-utility: clearfix;
   text-transform: uppercase;
   line-height: 1.5;
-  font-size: 1.1rem;
+  font-size: .9rem;
   .contact {
     margin-bottom: $column-gutter;
     a {
@@ -97,6 +85,7 @@ svg.foundry-logo {
     font-size: .9em;
     .contact {
       lost-column: 1/2 2 0;
+      margin-bottom: 0;
     }
   }
 }
