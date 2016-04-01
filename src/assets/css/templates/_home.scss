@@ -12,7 +12,7 @@ svg.foundry-logo {
   }
 }
 
-.ruled-cta {
+.script {
   position: relative;
 
   border-top: 1px solid #D2D0C7;
@@ -21,23 +21,18 @@ svg.foundry-logo {
   height: ($column-gutter*2);
   transition: height 250ms $easeOutExpo;
 
-  &__link {
+  &__spellout {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translateY(-50%) translateX(-50%) scale(.975);
+    transform: translateY(-50%) translateX(-50%);
     display: inline-block;
     width: 160px;
     height: 90px;
     background-size: 100% 100%;
     background-position: center center;
     color: transparent;
-    transition: transform 500ms $easeOutExpo;
-
     -webkit-backface-visibility: hidden;
-    &:hover {
-      transform: translateY(-50%) translateX(-50%) rotate(-1deg) scale(1);
-    }
     &.lazyloaded-error {
       height: auto;
       width: auto;
@@ -51,9 +46,9 @@ svg.foundry-logo {
 }
 
 @media screen and (min-width: $mq-small) {
-  .ruled-cta {
+  .script {
     height: ($column-gutter*3);
-    &__link {
+    &__spellout {
       width: 240px;
       height: 140px;
     }
@@ -135,7 +130,7 @@ svg.foundry-logo {
       position: absolute;
       top: 0;
       left: 0;
-      height: 100%;
+      height: 60vh;
       width: 100%;
 
       background-size: cover;
@@ -144,7 +139,7 @@ svg.foundry-logo {
     .bg {
       position: relative;
       overflow: hidden;
-      height: 100vh;
+      height: 60vh;
       lost-column: 1/2 0 0;
     }
   }

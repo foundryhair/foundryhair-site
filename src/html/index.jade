@@ -2,21 +2,20 @@ extends layouts/_application
 
 block content
 
-  section.content
-    .postcard
-      .postcard__content
-        include ../assets/images/foundry-logo.svg
-        .ruled-cta
-          a.ruled-cta__link(href="https://www.styleseat.com/mbhair" target="_blank" class="lazyloaded" data-src="assets/images/book.gif") Book an<br>appointment!
-        .ctas
-          .ctas__cta
-            a.btn.btn--cta(href="https://www.styleseat.com/s/thefoundry-kailua-hi" target="_blank") FIND A STYLIST
-          .ctas__cta
-            a.btn.btn--cta(href="#") CALL THE SALON
-        .contacts
-          .contact 9AM - 6PM<br><a href="tel:8086007539">(808) 600-7539</a>
-          .contact 418A Kuulei Rd, Unit C<br>Kailua, HI 96734
-    .instagram-feed.instagram-feed--mobile
+  section.postcard
+    .postcard__content
+      include ../assets/images/foundry-logo.svg
+      .script
+        .script__spellout(class="lazyloaded" data-src="assets/images/book.gif") Book an<br>appointment!
+      .ctas
+        .ctas__cta
+          a.btn.btn--cta(href="https://www.styleseat.com/s/thefoundry-kailua-hi" target="_blank") BOOK ONLINE
+        .ctas__cta
+          a.btn.btn--cta(href="#") CALL US
+  .instagram-feed.instagram-feed--mobile
+      //- .contacts
+      //-   .contact 9AM - 6PM<br><a href="tel:8086007539">(808) 600-7539</a>
+      //-   .contact 418A Kuulei Rd, Unit C<br>Kailua, HI 96734
       //- a.btn.btn--flip(href="#" data-action="flip") ABOUT US
       //- .container
         .side.side-01
