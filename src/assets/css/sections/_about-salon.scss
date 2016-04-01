@@ -1,0 +1,48 @@
+.about-salon {
+  position: relative;
+  lost-utility: clearfix;
+  padding: ($column-gutter*2) 0;
+  background-color: #eeede9;
+  display: flex;
+  align-items: center;
+  &__transition {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: auto;
+    transform: translateY(-100%);
+    path {
+      fill: #eeede9;
+    }
+  }
+  &__photo,
+  &__copy {
+    lost-column: 1/2 2 0;
+    padding: 0 $column-gutter;
+  }
+  &__photo {
+    text-align: right;
+    img {
+      display: inline-block;
+      width: 100%;
+      max-width: 420px;
+    }
+  }
+  &__copy {
+    h2, p {
+      margin: 0;
+      max-width: 420px;
+    }
+    h2 {
+      font-size: 1.75rem;
+      font-weight: 100;
+    }
+    p {
+      margin-top: $column-gutter;
+      font-size: 1.1rem;
+      font-weight: 200;
+    }
+  }
+}
