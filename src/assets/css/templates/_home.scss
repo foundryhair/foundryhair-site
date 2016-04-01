@@ -22,6 +22,7 @@ svg.foundry-logo {
   border-bottom: 1px solid #D2D0C7;
   margin: ($column-gutter*4) auto ($column-gutter*6);
   height: ($column-gutter*2);
+  transition: height 250ms $easeOutExpo;
 
   &__link {
     position: absolute;
