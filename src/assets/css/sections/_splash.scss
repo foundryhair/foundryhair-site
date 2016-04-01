@@ -1,0 +1,19 @@
+.splash {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: #000;
+  &__backgrounds {
+    position: relative;
+    height: 100%;
+  }
+}
+
+.backgrounds {
+  &__background {
+    lost-column: 1/3 3 0;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+  }
+}

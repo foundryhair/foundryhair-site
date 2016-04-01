@@ -1,18 +1,26 @@
 extends layouts/_application
 
 block content
-
-  section.postcard
-    .postcard__content
-      include ../assets/images/foundry-logo.svg
-      .script
-        .script__spellout(class="lazyloaded" data-src="assets/images/book.gif") Book an<br>appointment!
-      .ctas
-        .ctas__cta
-          a.btn.btn--cta(href="https://www.styleseat.com/s/thefoundry-kailua-hi" target="_blank") BOOK ONLINE
-        .ctas__cta
-          a.btn.btn--cta(href="#") CALL US
-  .instagram-feed.instagram-feed--mobile
+  section.splash
+    .splash__backgrounds.backgrounds
+      .backgrounds__background(style="background-image: url('assets/images/bg-profile.jpg'); background-position: bottom left;")
+      .backgrounds__background(style="background-image: url('assets/images/bg-waiting.jpg');")
+      .backgrounds__background(style="background-image: url('assets/images/bg-chairs.jpg');")
+    .splash__postcard.postcard
+      .postcard__content
+        include ../assets/images/foundry-logo.svg
+        .script
+          .script__spellout(class="lazyloaded" data-src="assets/images/book.gif") Book an<br>appointment!
+        .ctas
+          .ctas__cta
+            a.btn.btn--cta(href="https://www.styleseat.com/s/thefoundry-kailua-hi" target="_blank") BOOK ONLINE
+          .ctas__cta
+            a.btn.btn--cta(href="#") CALL US
+    //- .bgs
+      //- .bg
+        //- .full-bg(style="background-image:url('assets/images/filler-02.jpg');")
+      //- .bg.instagram-feed.instagram-feed--desktop
+  //- .instagram-feed.instagram-feed--mobile
       //- .contacts
       //-   .contact 9AM - 6PM<br><a href="tel:8086007539">(808) 600-7539</a>
       //-   .contact 418A Kuulei Rd, Unit C<br>Kailua, HI 96734
@@ -59,8 +67,3 @@ block content
             p.copyright &copy; 2015 - <span>2016</span>
           a.btn.btn--flip(href="#" data-action="flip") &times;
           #map(data-lat="21.395719" data-lng="-157.742035")
-
-  section.bgs
-    .bg
-      .full-bg(style="background-image:url('assets/images/filler-02.jpg');")
-    .bg.instagram-feed.instagram-feed--desktop
