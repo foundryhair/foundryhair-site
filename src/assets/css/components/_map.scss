@@ -1,37 +1,37 @@
-// #map {
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   width: 100%;
-//   height: 0;
-//   padding-bottom: 30%;
-//   overflow: hidden;
-// }
+// // #map {
+// //   position: absolute;
+// //   top: 0;
+// //   left: 0;
+// //   width: 100%;
+// //   height: 0;
+// //   padding-bottom: 30%;
+// //   overflow: hidden;
+// // }
 
-@media screen and (min-width: 800px) {
-  #map {
-    position: absolute;
-    top: 0;
-    left: 0;
-    border-radius: 5px 5px 0 0;
-    overflow: hidden;
-    width: 50%;
-    height: 100%;
-    padding-bottom: 0;
-    &:after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(#000,.5);
-      transition: background 1s $easeOutExpo;
-    }
-    .postcard-flipped & {
-      &:after {
-        background: rgba(#000,.75);
-      }
-    }
-  }
-}
+// @media screen and (min-width: 800px) {
+//   #map {
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     border-radius: 5px 5px 0 0;
+//     overflow: hidden;
+//     width: 50%;
+//     height: 100%;
+//     padding-bottom: 0;
+//     &:after {
+//       content: "";
+//       position: absolute;
+//       top: 0;
+//       left: 0;
+//       width: 100%;
+//       height: 100%;
+//       background: rgba(#000,.5);
+//       transition: background 1s $easeOutExpo;
+//     }
+//     .postcard-flipped & {
+//       &:after {
+//         background: rgba(#000,.75);
+//       }
+//     }
+//   }
+// }
