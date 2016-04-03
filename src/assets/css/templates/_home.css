@@ -42,10 +42,10 @@ svg.foundry-logo {
 
 @media screen and (min-width: $mq-small) {
   .script {
-    height: calc($column-gutter*3);
+    height: calc($column-gutter*2);
     &__spellout {
-      width: 240px;
-      height: 140px;
+      width: 200px;
+      height: 112.5px;
     }
   }
 }

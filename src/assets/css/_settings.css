@@ -1,5 +1,6 @@
 $column-gutter:         1em;
-$row-width:             420px;
+$row-width--postcard:   750px;
+$row-width:             1000px;
 
 $base-zindex:           100;
 
@@ -15,6 +16,7 @@ $c-pallete2:            #DFBC8C;
 $c-pallete3:            #B9A895;
 $c-pallete4:            #855E56;
 $c-pallete5:            #8E655A;
+$c-pallete6:            #d5c1a5;
 
 * {
   box-sizing: border-box;

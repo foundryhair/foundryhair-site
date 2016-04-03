@@ -34,13 +34,13 @@
     left: 50%;
     transform: translate3d(-50%, -50%, 0);
     z-index: $base-zindex;
-    width: 700px;
+    width: 500px;
     padding: calc($column-gutter*2);
-    border-radius: 4px;
+    border-radius: 8px;
     box-shadow: 0 2px 3px 1px color(#000 a(10%));
 
     &__content {
-      lost-center: $row-width;
+      lost-center: $row-width--postcard;
     }
   }
 }
@@ -53,6 +53,6 @@
 @media screen and (min-width: $mq-small) {
   .foundry-logo {
     max-width: none;
-    padding: 0 2rem;
+    padding: 0 6rem;
   }
 }

@@ -1,10 +1,14 @@
 .about-salon {
   position: relative;
-  lost-utility: clearfix;
   padding: calc($column-gutter*2) 0;
   background-color: #eeede9;
-  display: flex;
-  align-items: center;
+  lost-utility: clearfix;
+  &__container {
+    lost-center: $row-width;
+    lost-utility: clearfix;
+    display: flex;
+    align-items: center;
+  }
   &__transition {
     position: absolute;
     top: 0;
@@ -27,21 +31,19 @@
     img {
       display: inline-block;
       width: 100%;
-      max-width: 580px;
     }
   }
   &__copy {
     h2, p {
       margin: 0;
-      max-width: 420px;
     }
     h2 {
-      font-size: 1.75rem;
+      font-size: 2rem;
       font-weight: 100;
     }
     p {
       margin-top: $column-gutter;
-      font-size: 1.1rem;
+      font-size: 1.25rem;
       font-weight: 200;
     }
   }
