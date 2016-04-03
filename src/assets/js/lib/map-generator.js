@@ -37,14 +37,7 @@ export default class MapGen {
 
     this.map = new google.maps.Map(this.mapSelector, mapOptions);
 
-    // this.salonLat;
-    // this.salonLng;
-
-    let marker = new google.maps.Marker({
-      position: new google.maps.LatLng(this.salonLat, this.salonLng),
-      animation: google.maps.Animation.DROP,
-      map: this.map
-    });
+    this.addMarker();
 
     google.maps.event.addDomListener(window, 'resize', () => {
       setTimeout( () => {
@@ -69,6 +62,14 @@ export default class MapGen {
 
   center() {
     this.map.setCenter(this.mapCenter);
+  }
+
+  addMarker() {
+    let marker = new google.maps.Marker({
+      position: new google.maps.LatLng(this.salonLat, this.salonLng),
+      animation: google.maps.Animation.DROP,
+      map: this.map
+    });
   }
 
 }
