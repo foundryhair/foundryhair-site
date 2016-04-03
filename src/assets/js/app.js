@@ -1,3 +1,8 @@
+require('es6-shim');
+import MapGen from "./lib/map-generator";
+
+window['map'] = new MapGen('#map', 'map.mapInit');
+
 $(function(){
 
   var copyrightCurrentYear = $('.copyright').find('span').html();
