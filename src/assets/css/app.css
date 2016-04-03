@@ -5,6 +5,7 @@
 
 @import '_settings';
 @import '_structure';
+@import '_typography';
 
 @import 'components/_buttons';
 @import 'components/_instagram-feed';
