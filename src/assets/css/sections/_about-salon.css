@@ -1,25 +1,13 @@
 .about-salon {
   position: relative;
   padding: calc($column-gutter*2) 0;
-  background-color: #eeede9;
+  background-color: $c-pallete7;
   lost-utility: clearfix;
   &__container {
     lost-center: $row-width;
     lost-utility: clearfix;
     display: flex;
     align-items: center;
-  }
-  &__transition {
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: block;
-    width: 100%;
-    height: auto;
-    transform: translateY(-100%);
-    path {
-      fill: #eeede9;
-    }
   }
   &__photo,
   &__copy {

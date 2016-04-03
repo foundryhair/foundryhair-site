@@ -11,7 +11,7 @@
     width: 100%;
     height: auto;
     path {
-      fill: #eeede9;
+      fill: $c-pallete7;
     }
   }
   &__map {
