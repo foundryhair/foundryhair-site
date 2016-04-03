@@ -1,0 +1,42 @@
+.stylists {
+  position: relative;
+  background-color: $c-pallete1;
+  padding: $column-gutter;
+  min-height: 100vh;
+  background-image: url("../images/stylists.jpg");
+  background-size: cover;
+  h2, p {
+    color: #fff;
+  }
+  &__transition {
+    position: absolute;
+    left: 0;
+    z-index: 110;
+    pointer-events: none;
+    display: block;
+    width: 100%;
+    height: auto;
+    path {
+      fill: #eeede9;
+    }
+    &--top {
+      top: 0;
+    }
+    &--bottom {
+      bottom: 0;
+    }
+  }
+  &__copy {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    lost-center: $row-width;
+    width: 100%;
+    h2, p {
+      width: calc(100%*2/3);
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}

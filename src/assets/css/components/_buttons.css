@@ -16,4 +16,7 @@
       background-color: color($c-pallete1 tint(72.5%));
     }
   }
+  &--plain {
+    color: $c-pallete6;
+  }
 }
