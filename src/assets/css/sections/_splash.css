@@ -21,7 +21,7 @@
 .postcard {
   position: relative;
   background-color: #fff;
-  padding: ($column-gutter*4) $column-gutter;
+  padding: calc($column-gutter*4) $column-gutter;
   line-height: 1.5;
   text-align: center;
   transition: padding 250ms $easeOutExpo;
@@ -35,9 +35,9 @@
     transform: translate3d(-50%, -50%, 0);
     z-index: $base-zindex;
     width: 700px;
-    padding: ($column-gutter*2);
+    padding: calc($column-gutter*2);
     border-radius: 4px;
-    box-shadow: 0 2px 3px 1px rgba(#000,.1);
+    box-shadow: 0 2px 3px 1px color(#000 a(10%));
 
     &__content {
       lost-center: $row-width;

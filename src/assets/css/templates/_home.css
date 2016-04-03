@@ -3,7 +3,7 @@ svg.foundry-logo {
   width: 100%;
   path {
     &.text-foundry { fill: $c-pallete1; }
-    &.text-salon-coop { fill: lighten(desaturate($c-pallete2,20%),3%); }
+    &.text-salon-coop { fill: #d5c1a5; }
   }
 }
 
@@ -12,8 +12,8 @@ svg.foundry-logo {
 
   border-top: 1px solid #D2D0C7;
   border-bottom: 1px solid #D2D0C7;
-  margin: ($column-gutter*4) auto;
-  height: ($column-gutter*2);
+  margin: calc($column-gutter*4) auto;
+  height: calc($column-gutter*2);
   transition: height 250ms $easeOutExpo;
 
   &__spellout {
@@ -42,7 +42,7 @@ svg.foundry-logo {
 
 @media screen and (min-width: $mq-small) {
   .script {
-    height: ($column-gutter*3);
+    height: calc($column-gutter*3);
     &__spellout {
       width: 240px;
       height: 140px;
@@ -91,11 +91,11 @@ svg.foundry-logo {
 
 .social--mobile {
   list-style: none;
-  margin: $column-gutter 0 ($column-gutter*2);
+  margin: $column-gutter 0 calc($column-gutter*2);
   padding: 0;
   li {
     display: inline-block;
-    margin-right: ($column-gutter*1.5);
+    margin-right: calc($column-gutter*1.5);
 
   }
   img, svg {

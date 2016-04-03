@@ -5,7 +5,7 @@ html
       title Foundry Salon — Salon Cooperative and Creative Space
     meta(charset="utf-8")
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    script(src="assets/js/modernizr.js" async)
+    script(src="assets/js/vendor/modernizr.js" async)
     link(type="text/css" rel="stylesheet" href="assets/css/app.css")
     meta(name="twitter:card" content="summary")
     meta(name="twitter:title" content="Foundry Salon — Salon Cooperative and Creative Space")
@@ -22,9 +22,11 @@ html
     block content
     script(src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js")
     script.
-      window.FastClick || document.write('<script src="assets/js/fastclick.js">\x3C/script>')
+      window.FastClick || document.write('<script src="assets/js/vendor/fastclick.js">\x3C/script>')
     script(src="//cdnjs.cloudflare.com/ajax/libs/blazy/1.5.4/blazy.min.js")
     script.
-      window.Blazy || document.write('<script src="assets/js/blazy.js">\x3C/script>')
-    script(src="assets/js/jquery.min.js")
+      window.Blazy || document.write('<script src="assets/js/vendor/blazy.js">\x3C/script>')
+    script(src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js")
+    script.
+      window.jQuery || document.write('<script src="assets/js/vendor/jquery.js">\x3C/script>')
     script(src="assets/js/app.js")

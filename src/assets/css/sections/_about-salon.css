@@ -1,7 +1,7 @@
 .about-salon {
   position: relative;
   lost-utility: clearfix;
-  padding: ($column-gutter*2) 0;
+  padding: calc($column-gutter*2) 0;
   background-color: #eeede9;
   display: flex;
   align-items: center;
