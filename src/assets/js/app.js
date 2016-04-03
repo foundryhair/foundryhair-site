@@ -3,15 +3,15 @@ import MapGen from "./lib/map-generator";
 
 window['map'] = new MapGen('#map', 'map.mapInit');
 
-$(function(){
+// $(function(){
 
-  var copyrightCurrentYear = $('.copyright').find('span').html();
-  var thisYear = new Date().getFullYear();
-  if (copyrightCurrentYear < thisYear) {
-    $('.copyright').find('span').html(thisYear);
-  }
+//   var copyrightCurrentYear = $('.copyright').find('span').html();
+//   var thisYear = new Date().getFullYear();
+//   if (copyrightCurrentYear < thisYear) {
+//     $('.copyright').find('span').html(thisYear);
+//   }
 
-});
+// });
 
 var bLazy = new Blazy({
   selector: '.lazyloaded',

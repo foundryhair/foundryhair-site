@@ -27,55 +27,8 @@ block content
   section.location
     svg.location__transition(viewBox="0 0 717 80")
       path(d="M0.197861671,80 L720.197862,1.23762745e-14 L0.197861665,1.23762745e-14 L0.197861671,80 Z")
-    .location__map#map(data-lat="21.395719" data-lng="-157.742035")
-    //- .bgs
-      //- .bg
-        //- .full-bg(style="background-image:url('assets/images/filler-02.jpg');")
-      //- .bg.instagram-feed.instagram-feed--desktop
-  //- .instagram-feed.instagram-feed--mobile
-      //- .contacts
-      //-   .contact 9AM - 6PM<br><a href="tel:8086007539">(808) 600-7539</a>
-      //-   .contact 418A Kuulei Rd, Unit C<br>Kailua, HI 96734
-      //- a.btn.btn--flip(href="#" data-action="flip") ABOUT US
-      //- .container
-        .side.side-01
-          //- .side__content
-          //-   include ../assets/images/foundry-logo.svg
-          //-   //- h2.tagline salon cooperative + creative space
-          //-   .ruled-cta
-          //-     a.ruled-cta__link(href="https://www.styleseat.com/mbhair" target="_blank" class="lazyloaded" data-src="assets/images/book.gif") Book an<br>appointment!
-          //-   .contacts
-          //-     .contact 9AM - 6PM<br><a href="tel:8086007539">(808) 600-7539</a>
-          //-     .contact 418A Kuulei Rd, Unit C<br>Kailua, HI 96734
-          //- a.btn.btn--flip(href="#" data-action="flip") ABOUT US
-        .instagram-feed.instagram-feed--mobile
-        .side.side-02
-          .column
-            include ../assets/images/foundry-logo.svg
-            .row
-              p
-                | <a href="tel:8086007539">(808) 600-7539</a><br>
-                | <a href="mailto:mbhairhnl@gmail.com">MBHAIRHNL@GMAIL.COM</a><br>
-                a(href="http://instagram.com/foundryco.op" target="_blank")
-                  include ../assets/images/icon-instagram.svg
-                  | @FOUNDRYCO.OP
-            .row
-              p 9AM - 6PM
-              p 418A KUULEI RD, UNIT C<br>KAILUA, HI 96734
-            .row
-              a.btn.btn--book-small(href="https://www.styleseat.com/mbhair" target="_blank") BOOK VIA <img src="assets/images/logo-styleseat--light.png">
-          .column
-            h6.column__header ABOUT THE FOUNDRY
-            p.lead A modern oasis boutique salon tucked away in the heart of Kailua.
-            p The Foundry is dedicated to providing quality and experience. We pride ourselves in creating the ultimate contemporary, on-trend look that compliments each as an individual.
-            h6.column__header.column__header--mobile CONNECT
-            ul.social--mobile
-              li
-                a(href="https://www.styleseat.com/mbhair" target="_blank")
-                  img(src="assets/images/logo-styleseat--light.png")
-              li
-                a(href="http://instagram.com/foundryco.op" target="_blank")
-                  include ../assets/images/icon-instagram.svg
-            p.copyright &copy; 2015 - <span>2016</span>
-          a.btn.btn--flip(href="#" data-action="flip") &times;
-          #map(data-lat="21.395719" data-lng="-157.742035")
+    .location__prompt.map-prompt
+      .map-prompt__copy
+        h4 We are located at
+        h2 418A Ku&lsquo;ulei Road, Unit C<br>Kailua, HI 96734
+    .location__map#map(data-lat="21.395372" data-lng="-157.744254")
