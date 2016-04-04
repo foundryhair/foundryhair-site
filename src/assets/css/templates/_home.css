@@ -12,7 +12,7 @@ svg.foundry-logo {
 
   border-top: 1px solid #D2D0C7;
   border-bottom: 1px solid #D2D0C7;
-  margin: calc($column-gutter*4) auto;
+  margin: calc($column-gutter*4) auto calc($column-gutter*5);
   height: calc($column-gutter*2);
   transition: height 250ms $easeOutExpo;
 
@@ -42,7 +42,8 @@ svg.foundry-logo {
 
 @media screen and (min-width: $mq-small) {
   .script {
-    height: calc($column-gutter*2);
+    height: calc($column-gutter*3);
+    max-width: 500px;
     &__spellout {
       width: 200px;
       height: 112.5px;
@@ -52,7 +53,6 @@ svg.foundry-logo {
 
 .ctas {
   lost-utility: clearfix;
-  margin-bottom: $column-gutter;
   &__cta {
     display: inline-block;
     margin-right: $column-gutter;
