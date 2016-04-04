@@ -31,7 +31,7 @@
     &__container {
       display: flex;
       align-items: center;
-      padding: calc($column-gutter*2) 0;
+      padding: calc($column-gutter*4) $column-gutter;
     }
     &__copy,
     &__feed {

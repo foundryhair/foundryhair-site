@@ -5,7 +5,7 @@
   &__container {
     lost-center: $row-width;
     lost-utility: clearfix;
-    padding-bottom: calc($column-gutter * 4);
+    padding: 0 calc($column-gutter*2) calc($column-gutter*4);
   }
   &__photo,
   &__copy {
@@ -20,8 +20,6 @@
     }
   }
   &__copy {
-    padding-left: calc($column-gutter*2);
-    padding-right: calc($column-gutter*2);
   }
 }
 
@@ -33,11 +31,11 @@
     &__container {
       display: flex;
       align-items: center;
+      padding: 0 $column-gutter;
     }
     &__photo,
     &__copy {
-      lost-column: 1/2 2 0;
-      padding: 0 $column-gutter;
+      lost-column: 1/2 2;
     }
     &__photo {
       text-align: right;
