@@ -41,7 +41,10 @@
     overflow: scroll;
   }
   &__image {
-    lost-column: 1/2 2 $column-gutter;
-    margin-bottom: $column-gutter;
+    lost-column: 1/2 2 0;
+    padding-bottom: 50%;
+    height: 0;
+    background-size: cover;
+    background-position: center center;
   }
 }
