@@ -1,0 +1,14 @@
+.gallery {
+  background-color: $c-pallete7;
+  &__copy {
+    lost-center: $row-width;
+    h2, p {
+      width: 50%;
+    }
+    img {
+      height: 1.75rem;
+      width: auto;
+      vertical-align: middle;
+    }
+  }
+}
