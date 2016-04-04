@@ -2,49 +2,99 @@
   background-color: $c-pallete7;
   &__container {
     lost-center: $row-width;
-    padding: calc($column-gutter*2) 0;
-    display: flex;
-    align-items: center;
+    padding: calc($column-gutter*6) 0;
   }
   &__copy,
   &__feed {
-    lost-column: 1/2 2;
+    width: 100%;
   }
   &__copy {
+    padding-left: calc($column-gutter*2);
+    padding-right: calc($column-gutter*2);
+    br {
+      display: none;
+    }
     img {
+      display: inline;
       height: 2rem;
       width: auto;
       vertical-align: middle;
     }
   }
   &__feed {
-    position: relative;
-    &:before {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      background-image: url('../images/gradient--bottom.gif');
-      z-index: 300;
-      width: 100%;
-      height: 0;
-      padding-bottom: 27%;
-      background-size: auto 100%;
-      pointer-events: none;
+    margin-bottom: calc($column-gutter*2);
+  }
+}
+
+@media screen and (min-width: $mq-small) {
+  .gallery {
+    &__container {
+      display: flex;
+      align-items: center;
+      padding: calc($column-gutter*2) 0;
+    }
+    &__copy,
+    &__feed {
+      lost-column: 1/2 2;
+    }
+    &__feed {
+      position: relative;
+      margin-bottom: 0;
+      &:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        background-image: url('../images/gradient--bottom.gif');
+        z-index: 300;
+        width: 100%;
+        height: 0;
+        padding-bottom: 27%;
+        background-size: auto 100%;
+        pointer-events: none;
+      }
+    }
+    &__copy {
+      padding-left: 0;
+      padding-right: 0;
+      br {
+        display: inline;
+      }
     }
   }
 }
 
 .feed {
+  lost-utility: clearfix;
+  overflow: hidden;
   &__container {
-    max-height: 70vh;
-    overflow: scroll;
+    height: 140px;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    background-color: $c-pallete1;
   }
   &__image {
-    lost-column: 1/2 2 0;
-    padding-bottom: 50%;
-    height: 0;
+    display: inline-block;
+    height: 140px;
+    width: 140px;
     background-size: cover;
     background-position: center center;
+  }
+}
+
+@media screen and (min-width: $mq-small) {
+  .feed {
+    &__container {
+      height: auto;
+      max-height: 70vh;
+      overflow: scroll;
+    }
+    &__image {
+      lost-column: 1/2 2 0;
+      height: 0;
+      padding-bottom: 50%;
+    }
   }
 }
