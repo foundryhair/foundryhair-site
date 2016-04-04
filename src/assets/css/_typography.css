@@ -1,13 +1,13 @@
 body > section {
   h2 {
-    font-size: 2.75rem;
+    font-size: 2.375rem;
     font-weight: 200;
     margin: 0 0 calc($column-gutter / 2);
   }
   p {
     margin-top: calc($column-gutter/2);
     margin-bottom: calc($column-gutter/2);
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-weight: 200;
     &:last-of-type {
       margin-top: 0;

@@ -37,12 +37,18 @@ block content
     svg.stylists__transition.stylists__transition--bottom(viewBox="0 0 717 80")
       path(d="M5.68434189e-14,80.3951975 L719.999989,80.3951975 L720,0 L5.68434189e-14,80.3951975 Z")
   section.gallery
-    .gallery__copy
-      h2 A haircut is worth a thousand words.
-      p
-        | Check out some of our past clients on our&nbsp;
-        a.btn(href="https://www.instagram.com/foundryco.op/" target="_blank") <img src="assets/images/svg/logo-instagram.svg" />&nbsp;
-        | feed.
+    .gallery__container
+      .gallery__feed.feed
+        .feed__container
+          - for (var i=0; i<20; i++)
+            img.feed__image(src="https://placeimg.com/640/640/people")
+      .gallery__copy
+        h2 A day at the Foundry <br>is worth a thousand words.
+        p
+          | Check out some of our past clients <br>on our&nbsp;
+          a.btn(href="https://www.instagram.com/foundryco.op/" target="_blank") <img src="assets/images/svg/logo-instagram.svg" />&nbsp;
+          | feed.
+    .gallery__
   section.location
     svg.location__transition(viewBox="0 0 717 80")
       path(d="M0.197861671,80 L720.197862,1.23762745e-14 L0.197861665,1.23762745e-14 L0.197861671,80 Z")
