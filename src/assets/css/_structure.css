@@ -1,9 +1,3 @@
-@media screen and (min-width: $mq-small) {
-  a[href*="tel:"] {
-    pointer-events: none;
-  }
-}
-
 ::selection {
   background-color: color($c-pallete1 a(80%));
   color: #fff;

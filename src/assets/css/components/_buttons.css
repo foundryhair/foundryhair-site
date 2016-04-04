@@ -11,12 +11,77 @@
     letter-spacing: .05rem;
     text-transform: uppercase;
     border-radius: 4px;
-    transition: 250ms $easeOutExpo background;
+    transition: 500ms $easeOutExpo background;
     &:hover {
-      background-color: color($c-pallete1 tint(72.5%));
+      background-color: color($c-pallete1 tint(90%));
+    }
+  }
+  &--callout {
+    position: relative;
+    span {
+      display: none;
     }
   }
   &--plain {
     color: $c-pallete6;
+  }
+}
+
+@media screen and (min-width: $mq-small) {
+  .btn {
+    &--callout {
+      &:hover {
+        > span {
+          opacity: 1;
+          transform: translateY(100%);
+          pointer-events: initial;
+        }
+      }
+      > span {
+        position: absolute;
+        left: 0;
+        bottom: -.5rem;
+        transform: translateY(90%);
+        display: block;
+        width: 100%;
+        background-color: $c-pallete1;
+        color: #fff;
+        font-size: 1rem;
+        font-weight: 200;
+        text-transform: capitalize;
+        padding: $column-gutter;
+        border-radius: 4px;
+        box-shadow: 0 2px 3px 1px color(#000 a(10%));
+        opacity: 0;
+        transition: all $easeOutExpo 500ms;
+        pointer-events: none;
+        span {
+          display: block;
+          font-size: .6rem;
+          letter-spacing: .05rem;
+        }
+        &:before {
+          content: "";
+          position: absolute;
+          top: -.9rem;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 0;
+          height: 0;
+          border-left: 1rem solid transparent;
+          border-right: 1rem solid transparent;
+          border-bottom: 1rem solid $c-pallete1;
+        }
+        &:after {
+          content: "";
+          position: absolute;
+          top: -.9rem;
+          left: 0;
+          width: 100%;
+          height: 1rem;
+          background: transparent;
+        }
+      }
+    }
   }
 }
