@@ -1,10 +1,11 @@
 .stylists {
   position: relative;
+  lost-utility: clearfix;
   background-color: $c-pallete1;
-  padding: $column-gutter;
-  min-height: 100vh;
+  padding: calc($column-gutter*8) calc($column-gutter*2);
   background-image: url("../images/stylists.jpg");
   background-size: cover;
+  background-position: center center;
   h2, p {
     color: #fff;
   }
@@ -27,16 +28,25 @@
     }
   }
   &__copy {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    lost-center: $row-width;
-    width: 100%;
-    h2, p {
-      width: calc(100%*2/3);
-      margin-left: auto;
-      margin-right: auto;
+  }
+}
+
+@media screen and (min-width: $mq-small) {
+  .stylists {
+    min-height: 100vh;
+    padding: $column-gutter;
+    &__copy {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      lost-center: $row-width;
+      width: 100%;
+      h2, p {
+        width: calc(100%*2/3);
+        margin-left: auto;
+        margin-right: auto;
+      }
     }
   }
 }
