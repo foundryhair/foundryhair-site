@@ -5,11 +5,14 @@ export default class MapGen {
     this.mapSelector = document.querySelector(selector);
     this.callback = callback;
 
-    this.lat = this.mapSelector.getAttribute('data-lat');
-    this.lng = this.mapSelector.getAttribute('data-lng');
+    this.lat = 21.395372;
+    this.lng = -157.744254;
 
-    this.salonLat = 21.3950662;
-    this.salonLng = -157.7430877;
+    this.latMobile = 21.395;
+    this.lngMobile = -157.7455;
+
+    this.salonLat = 21.39515;
+    this.salonLng = -157.74317;
 
     this.mapView = this.mapSelector.getAttribute('data-view') || 'map';
 
@@ -20,11 +23,8 @@ export default class MapGen {
   }
   mapInit() {
 
-    this.mapCenter = new google.maps.LatLng(this.lat, this.lng);
-
-    const mapOptions = {
-      center: this.mapCenter,
-      zoom: (this.mapSelector.getAttribute('data-zoom')) ? parseInt(this.mapSelector.getAttribute('data-zoom')) : 18,
+    this.mapOptions = {
+      zoom: 18,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
       styles: this.mapStyles,
       mapTypeControl: false,
@@ -35,7 +35,16 @@ export default class MapGen {
       zoomControl: true
     };
 
-    this.map = new google.maps.Map(this.mapSelector, mapOptions);
+    this.mapOptions.center = new google.maps.LatLng(this.lat, this.lng);
+
+    if (window.matchMedia( "(max-width: 767px)" ).matches) {
+      this.mapOptions.center = new google.maps.LatLng(this.latMobile, this.lngMobile);
+      this.mapOptions.draggable = false;
+      this.mapOptions.zoom = 16;
+      this.mapOptions.zoomControl = false;
+    }
+
+    this.map = new google.maps.Map(this.mapSelector, this.mapOptions);
 
     this.addMarker();
 
@@ -61,7 +70,7 @@ export default class MapGen {
   }
 
   center() {
-    this.map.setCenter(this.mapCenter);
+    this.map.setCenter(this.mapOptions.center);
   }
 
   addMarker() {
