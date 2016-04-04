@@ -13,6 +13,7 @@ let instagramFeed = new Instafeed({
     template: '<div class="feed__image" style="background-image:url({{image}})"></div>'
 });
 instagramFeed.run();
+
 // $(function(){
 
 //   var copyrightCurrentYear = $('.copyright').find('span').html();
@@ -25,5 +26,6 @@ instagramFeed.run();
 
 var bLazy = new Blazy({
   selector: '.lazyloaded',
+  successClass: 'lazyloaded-loaded',
   errorClass: 'lazyloaded-error'
 });

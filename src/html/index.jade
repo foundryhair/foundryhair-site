@@ -3,9 +3,9 @@ extends layouts/_application
 block content
   section.splash
     .splash__backgrounds.backgrounds
-      .backgrounds__background(style="background-image: url('assets/images/bg-profile.jpg'); background-position: bottom left;")
-      .backgrounds__background(style="background-image: url('assets/images/bg-waiting.jpg');")
-      .backgrounds__background(style="background-image: url('assets/images/bg-chairs.jpg');")
+      .backgrounds__background.lazyloaded(data-src="assets/images/bg-profile.jpg" style="background-position: bottom left;")
+      .backgrounds__background.lazyloaded(data-src="assets/images/bg-waiting.jpg")
+      .backgrounds__background.lazyloaded(data-src="assets/images/bg-chairs.jpg")
     .splash__postcard.postcard
       .postcard__content
         include ../assets/images/foundry-logo.svg
@@ -40,8 +40,6 @@ block content
     .gallery__container
       .gallery__feed.feed
         .feed__container#instafeed
-          //- - for (var i=0; i<20; i++)
-          //-   img.feed__image(src="https://placeimg.com/640/640/people")
       .gallery__copy
         h2 A day at the Foundry <br>is worth a thousand words.
         p

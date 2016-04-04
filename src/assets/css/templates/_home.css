@@ -52,12 +52,25 @@ svg.foundry-logo {
 }
 
 .ctas {
-  lost-utility: clearfix;
   &__cta {
-    display: inline-block;
-    margin-right: $column-gutter;
+    margin-bottom: $column-gutter;
     &:last-of-type {
-      margin-right: 0;
+      margin-bottom: 0;
+    }
+  }
+}
+
+
+@media screen and (min-width: $mq-small) {
+  .ctas {
+    lost-utility: clearfix;
+    &__cta {
+      display: inline-block;
+      margin-bottom: 0;
+      margin-right: $column-gutter;
+      &:last-of-type {
+        margin-right: 0;
+      }
     }
   }
 }
