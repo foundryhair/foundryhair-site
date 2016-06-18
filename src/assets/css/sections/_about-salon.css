@@ -1,0 +1,49 @@
+.about-salon {
+  position: relative;
+  background-color: $c-pallete7;
+  lost-utility: clearfix;
+  &__container {
+    lost-center: $row-width;
+    lost-utility: clearfix;
+    padding: 0 calc($column-gutter*2) calc($column-gutter*4);
+  }
+  &__photo,
+  &__copy {
+    display: block;
+    width: 100%;
+  }
+  &__photo {
+    img {
+      height: 14rem;
+      width: auto;
+      margin: 0 auto;
+    }
+  }
+  &__copy {
+  }
+}
+
+@media screen and (min-width: $mq-small) {
+  .about-salon {
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    &__container {
+      display: flex;
+      align-items: center;
+      padding: 0 $column-gutter;
+    }
+    &__photo,
+    &__copy {
+      lost-column: 1/2 2;
+    }
+    &__photo {
+      text-align: right;
+      img {
+        display: inline-block;
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:400,300');
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script');
+
+@import '../../../bower_components/normalize.css/normalize.css';
+
+@import '_settings';
+@import '_structure';
+@import '_typography';
+
+@import 'components/_buttons';
+@import 'components/_instagram-feed';
+
+@import 'templates/_home';
+
+@import 'sections/_splash';
+@import 'sections/_about-salon';
+@import 'sections/_location';
+@import 'sections/_stylists';
+@import 'sections/_gallery';

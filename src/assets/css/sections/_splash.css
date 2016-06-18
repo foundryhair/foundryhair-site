@@ -1,0 +1,80 @@
+.splash {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: #000;
+  &__backgrounds {
+    position: relative;
+    height: 100%;
+  }
+  &__transition {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    display: block;
+    width: 100%;
+    height: auto;
+    path {
+      fill: $c-pallete7;
+    }
+  }
+}
+
+.backgrounds {
+  &__background {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    display: none;
+    &[data-src*="chairs"],
+    &[style*="chairs"] {
+      display: block;
+    }
+  }
+}
+
+@media screen and (min-width: $mq-small) {
+  .backgrounds {
+    &__background {
+      lost-column: 1/3 3 0;
+      display: block;
+    }
+  }
+}
+
+.postcard {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: calc(100% - 2rem);
+  transform: translate3d(-50%, -50%, 0);
+  z-index: $base-zindex;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 3px 1px color(#000 a(10%));
+  padding: calc($column-gutter*4) $column-gutter;
+  line-height: 1.5;
+  text-align: center;
+  transition: padding 250ms $easeOutExpo;
+}
+
+@media screen and (min-width: $mq-small) {
+  .postcard {
+    width: $row-width--postcard;
+    padding: calc($column-gutter*4);
+  }
+}
+
+.foundry-logo {
+  max-width: 200px;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: $mq-small) {
+  .foundry-logo {
+    max-width: none;
+    padding: 0 8rem;
+  }
+}
