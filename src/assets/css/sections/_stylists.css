@@ -15,7 +15,8 @@
 
 @media screen and (min-width: $mq-small) {
   .stylists {
-    min-height: 100vh;
+    height: 100vh;
+    min-height: $min-height;
     padding: $column-gutter;
     &__copy {
       position: absolute;

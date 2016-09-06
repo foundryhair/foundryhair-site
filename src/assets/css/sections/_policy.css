@@ -10,6 +10,13 @@
       margin: 0 0 $column-gutter;
     }
   }
+  a {
+    color: $c-pallete6;
+    text-decoration: none;
+    &:hover {
+      color: color($c-pallete6 shade(10%));
+    }
+  }
 }
 
 @media screen and (min-width: $mq-small) {
