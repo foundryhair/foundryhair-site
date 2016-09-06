@@ -4,7 +4,7 @@
 
 body {
   font-family: $body-font-family;
-  font-weight: 200;
+  font-weight: 300;
   font-size: 80%;
   color: $c-pallete1;
 }

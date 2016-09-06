@@ -16,7 +16,7 @@ body > section {
       margin-bottom: calc($column-gutter/2);
       padding-left: $column-gutter;
       font-size: 1rem;
-      font-weight: 200;
+      font-weight: 300;
       &:after {
         content: "";
         position: absolute;
@@ -37,11 +37,11 @@ body > section {
   body > section {
     h2 {
       font-size: 2.375rem;
-      font-weight: 200;
+      font-weight: 300;
     }
     h3 {
       font-size: 2rem;
-      font-weight: 200;
+      font-weight: 300;
     }
     p {
       &:not(.small):not(.popdown) {
