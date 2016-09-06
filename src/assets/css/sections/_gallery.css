@@ -1,5 +1,6 @@
 .gallery {
-  background-color: $c-pallete7;
+  background-color: $c-pallete1;
+  color: #fff;
   &__container {
     lost-center: $row-width;
     padding: calc($column-gutter*6) 0;

@@ -9,24 +9,6 @@
   h2, p {
     color: #fff;
   }
-  &__transition {
-    position: absolute;
-    left: 0;
-    z-index: 110;
-    pointer-events: none;
-    display: block;
-    width: 100%;
-    height: auto;
-    path {
-      fill: #eeede9;
-    }
-    &--top {
-      top: 0;
-    }
-    &--bottom {
-      bottom: 0;
-    }
-  }
   &__copy {
   }
 }

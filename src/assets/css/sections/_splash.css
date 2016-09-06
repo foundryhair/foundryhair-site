@@ -7,18 +7,6 @@
     position: relative;
     height: 100%;
   }
-  &__transition {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    z-index: 100;
-    display: block;
-    width: 100%;
-    height: auto;
-    path {
-      fill: $c-pallete7;
-    }
-  }
 }
 
 .backgrounds {
