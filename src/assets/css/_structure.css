@@ -1,3 +1,22 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $body-font-family;
+  font-weight: 300;
+  font-size: 80%;
+  color: $c-pallete1;
+}
+
+@media screen and (min-width: 1024px) {
+  body {
+    font-size: 100%;
+  }
+}
+
 ::selection {
   background-color: color($c-pallete1 a(80%));
   color: #fff;

@@ -1,28 +1,36 @@
 body > section {
+  position: relative;
+  max-width: 100vw;
+  overflow: hidden;
   h2 {
     font-size: 1.25rem;
     font-weight: 400;
     margin: 0 0 calc($column-gutter / 2);
   }
+  h3 {
+    font-size: 1.15rem;
+    font-weight: 400;
+  }
   p {
-    position: relative;
-    margin-top: calc($column-gutter/2);
-    margin-bottom: calc($column-gutter/2);
-    padding-left: $column-gutter;
-    font-size: 1rem;
-    font-weight: 200;
-    &:after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: .125rem;
-      height: 100%;
-      background-color: $c-pallete6;
+    &:not(.small):not(.popdown) {
+      position: relative;
+      margin-top: calc($column-gutter/2);
+      margin-bottom: calc($column-gutter/2);
+      padding-left: $column-gutter;
+      font-size: 1rem;
+      font-weight: 300;
+      &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: .125rem;
+        height: 100%;
+        background-color: $c-pallete6;
+      }
     }
-    &:last-of-type {
-      margin-top: 0;
-      margin-bottom: 0;
+    &.small {
+      line-height: 1.5;
     }
   }
 }
@@ -31,10 +39,16 @@ body > section {
   body > section {
     h2 {
       font-size: 2.375rem;
-      font-weight: 200;
+      font-weight: 300;
+    }
+    h3 {
+      font-size: 2rem;
+      font-weight: 300;
     }
     p {
-      font-size: 1.5rem;
+      &:not(.small):not(.popdown) {
+        font-size: 1.5rem;
+      }
     }
   }
 }

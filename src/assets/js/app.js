@@ -5,8 +5,19 @@ window['map'] = new MapGen('#map', 'map.mapInit');
 
 let instagramFeed = new InstagramFeed('instafeed');
 
-var bLazy = new Blazy({
-  selector: '.lazyloaded',
-  successClass: 'lazyloaded-loaded',
-  errorClass: 'lazyloaded-error'
+let bLazy = new Blazy({
+  selector: '.lazyload',
+  successClass: 'lazyload--success',
+  errorClass: 'lazyload--error'
 });
+
+let resizing = false;
+window.onresize = () => {
+  if (!resizing) {
+    resizing = true;
+    setTimeout(()=>{
+      resizing = false;
+      bLazy.revalidate()
+    }, 500)
+  }
+}

@@ -1,0 +1,111 @@
+.policy {
+  background-color: $c-pallete7;
+  padding: calc($column-gutter*2) $column-gutter;
+  &__container {
+    lost-center: $row-width;
+  }
+  &__title {
+    text-align: center;
+    h2 {
+      margin: 0 0 $column-gutter;
+    }
+  }
+  a {
+    color: $c-pallete6;
+    text-decoration: none;
+    &:hover {
+      color: color($c-pallete6 shade(10%));
+    }
+  }
+}
+
+@media screen and (min-width: $mq-small) {
+  .policy {
+    min-height: 600px;
+    padding-top: calc($column-gutter*2);
+    padding-bottom: calc($column-gutter*2);
+    display: flex;
+    align-items: center;
+    &__column {
+      lost-column: 1/2 2 100px;
+    }
+    &__title {
+      h2 {
+        margin-bottom: $column-gutter;
+      }
+    }
+  }
+}
+
+.policy-dropdown {
+  margin-bottom: $column-gutter;
+  &__title {
+    position: relative;
+    padding: $column-gutter 0;
+    border-bottom: 1px solid color($c-pallete7 shade(5%));
+    &:after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: .75;
+      width: 24px;
+      height: 24px;
+      background-image: url("../images/svg/sprite-toggle.svg");
+      background-size: auto 24px;
+      background-position: 0 0;
+      background-repeat: no-repeat;
+      pointer-events: none;
+      transition: opacity ease-out 150ms;
+    }
+    label {
+      display: block;
+      user-select: none;
+      cursor: pointer;
+      padding-right: 24px;
+    }
+    h3 {
+      margin: 0;
+    }
+    &:hover {
+      &:after {
+        opacity: 1;
+      }
+    }
+  }
+  &__hidden {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all ease-out 500ms;
+  }
+  &__toggle {
+    display: none;
+    &:checked {
+      ~ [class*="__hidden"] {
+        transform: translateY(1rem);
+        max-height: 400px;
+        opacity: 1;
+      }
+      ~ [class*="__title"] {
+        &:after {
+          background-position: -24px 0;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $mq-small) {
+  .policy-dropdown {
+    margin-bottom: calc($column-gutter*2);
+    &__title {
+      padding-top: calc($column-gutter/2);
+      padding-bottom: calc($column-gutter/2);
+      h3 {
+        font-size: 1.75rem;
+      }
+    }
+  }
+}

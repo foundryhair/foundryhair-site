@@ -1,0 +1,46 @@
+.transition {
+  z-index: 110;
+  pointer-events: none;
+  display: block;
+  width: 100%;
+  height: auto;
+  path {
+    fill: $c-pallete7;
+  }
+  &--abs {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scale(1.05);
+  }
+  &--top {
+    top: 0;
+  }
+  &--bottom {
+    top: initial;
+    bottom: 0;
+  }
+  &--dark {
+    path {
+      fill: $c-pallete1;
+    }
+  }
+}
+
+@media screen and (max-width: $mq-small--max) {
+  .transition {
+    &--hide-mobile {
+      display: none;
+    }
+  }
+}
+
+@media screen and (min-width: $mq-small) {
+  .transition {
+    &--dark-desktop {
+      path {
+        fill: $c-pallete1;
+      }
+    }
+  }
+}

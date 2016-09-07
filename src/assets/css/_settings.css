@@ -2,6 +2,8 @@ $column-gutter:         1em;
 $row-width--postcard:   750px;
 $row-width:             1000px;
 
+$min-height:            600px;
+
 $base-zindex:           100;
 
 $easeOutExpo:           cubic-bezier(0.19, 1, 0.22, 1);
@@ -10,6 +12,7 @@ $body-font-family:      "Lato", "Helvetica Neue", sans-serif;
 $script-font-family:    "Dancing Script", cursive;
 
 $mq-small:              768px;
+$mq-small--max:         767px;
 
 $c-pallete1:            #3D3C40;
 $c-pallete2:            #DFBC8C;
@@ -18,20 +21,3 @@ $c-pallete4:            #855E56;
 $c-pallete5:            #8E655A;
 $c-pallete6:            #d5c1a5;
 $c-pallete7:            #eeede9;
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  font-family: $body-font-family;
-  font-weight: 200;
-  font-size: 80%;
-  color: $c-pallete1;
-}
-
-@media screen and (min-width: 1024px) {
-  body {
-    font-size: 100%;
-  }
-}

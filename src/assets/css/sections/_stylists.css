@@ -9,31 +9,20 @@
   h2, p {
     color: #fff;
   }
-  &__transition {
-    position: absolute;
-    left: 0;
-    z-index: 110;
-    pointer-events: none;
-    display: block;
-    width: 100%;
-    height: auto;
-    path {
-      fill: #eeede9;
+  a {
+    color: $c-pallete6;
+    transition: color 150ms ease-out;
+    text-decoration: none;
+    &:hover {
+      color: color($c-pallete6 shade(15%));
     }
-    &--top {
-      top: 0;
-    }
-    &--bottom {
-      bottom: 0;
-    }
-  }
-  &__copy {
   }
 }
 
 @media screen and (min-width: $mq-small) {
   .stylists {
-    min-height: 100vh;
+    height: 100vh;
+    min-height: $min-height;
     padding: $column-gutter;
     &__copy {
       position: absolute;

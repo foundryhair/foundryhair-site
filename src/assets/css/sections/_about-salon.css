@@ -27,7 +27,8 @@
   .about-salon {
     display: flex;
     align-items: center;
-    min-height: 100vh;
+    height: 100vh;
+    min-height: $min-height;
     &__container {
       display: flex;
       align-items: center;

@@ -1,8 +1,9 @@
 .gallery {
-  background-color: $c-pallete7;
+  background-color: $c-pallete1;
+  color: #fff;
   &__container {
     lost-center: $row-width;
-    padding: calc($column-gutter*6) 0;
+    padding: 0;
   }
   &__copy,
   &__feed {
@@ -21,8 +22,38 @@
       vertical-align: middle;
     }
   }
-  &__feed {
-    margin-bottom: calc($column-gutter*2);
+  .transition {
+    z-index: 300;
+  }
+}
+
+@media screen and (max-width: $mq-small--max) {
+  .gallery {
+    &__container {
+      position: relative;
+    }
+    &__feed {
+      position: relative;
+      &:after {
+        content: "";
+        position: absolute;
+        display: block;
+        top: 0;
+        left: 0;
+        z-index: 200;
+        width: 100%;
+        height: 100%;
+        background-color: color($c-pallete1 a(.75));
+      }
+    }
+    &__copy {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      z-index: 210;
+      width: 100%;
+      transform: translateY(-50%);
+    }
   }
 }
 
@@ -38,21 +69,7 @@
       lost-column: 1/2 2;
     }
     &__feed {
-      position: relative;
       margin-bottom: 0;
-      &:before {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        background-image: url('../images/gradient--bottom.gif');
-        z-index: 300;
-        width: 100%;
-        height: 0;
-        padding-bottom: 27%;
-        background-size: auto 100%;
-        pointer-events: none;
-      }
     }
     &__copy {
       padding-left: 0;
@@ -65,20 +82,16 @@
 }
 
 .feed {
-  lost-utility: clearfix;
+  position: relative;
   overflow: hidden;
   &__container {
-    height: 140px;
-    overflow-y: hidden;
-    overflow-x: scroll;
-    -webkit-overflow-scrolling: touch;
+    max-height: 400px;
     white-space: nowrap;
     background-color: $c-pallete1;
   }
   &__image {
-    display: inline-block;
-    height: 140px;
-    width: 140px;
+    lost-column: 1/5 5 0;
+    padding-bottom: 20%;
     background-size: cover;
     background-position: center center;
   }
@@ -87,13 +100,13 @@
 @media screen and (min-width: $mq-small) {
   .feed {
     &__container {
-      height: auto;
       max-height: 70vh;
-      overflow: scroll;
+      overflow-x: hidden;
+      overflow-y: scroll;
+      -webkit-overflow-scrolling: touch;
     }
     &__image {
       lost-column: 1/2 2 0;
-      height: 0;
       padding-bottom: 50%;
     }
   }
