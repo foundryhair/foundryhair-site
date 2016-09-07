@@ -16,10 +16,21 @@ window['map'] = new _mapGenerator2.default('#map', 'map.mapInit');
 var instagramFeed = new _instagramFeed2.default('instafeed');
 
 var bLazy = new Blazy({
-  selector: '.lazyloaded',
-  successClass: 'lazyloaded-loaded',
-  errorClass: 'lazyloaded-error'
+  selector: '.lazyload',
+  successClass: 'lazyload--success',
+  errorClass: 'lazyload--error'
 });
+
+var resizing = false;
+window.onresize = function () {
+  if (!resizing) {
+    resizing = true;
+    setTimeout(function () {
+      resizing = false;
+      bLazy.revalidate();
+    }, 500);
+  }
+};
 
 },{"./lib/instagram-feed":2,"./lib/map-generator":3}],2:[function(require,module,exports){
 'use strict';
@@ -88,19 +99,15 @@ var MapGen = function () {
     // Get latitude and longitude from data attributes
     this.mapSelector = document.querySelector(selector);
     this.callback = callback;
+    this.isMobile = window.matchMedia("(max-width: 767px)").matches;
 
-    this.lat = 21.395372;
-    this.lng = -157.744254;
-
-    this.latMobile = 21.395;
-    this.lngMobile = -157.7455;
+    this.lat = this.isMobile ? 21.395 : 21.395372;
+    this.lng = this.isMobile ? -157.7455 : -157.744254;
 
     this.salonLat = 21.39515;
     this.salonLng = -157.74317;
 
     this.mapView = this.mapSelector.getAttribute('data-view') || 'map';
-
-    this.mapStyles = [{ "stylers": [{ "visibility": "off" }] }, { "featureType": "water", "stylers": [{ "visibility": "on" }] }, { "featureType": "poi", "stylers": [{ "visibility": "on" }] }, { "featureType": "transit", "stylers": [{ "visibility": "on" }] }, { "featureType": "landscape", "stylers": [{ "visibility": "on" }] }, { "featureType": "road", "stylers": [{ "visibility": "on" }] }, { "featureType": "administrative", "stylers": [{ "visibility": "on" }] }, { featureType: "all", elementType: "labels.text.fill", stylers: [{ saturation: 36 }, { color: "#000000" }, { lightness: 50 }] }, { featureType: "all", elementType: "labels.text.stroke", stylers: [{ visibility: "on" }, { color: "#000000" }, { lightness: 16 }] }, { featureType: "all", elementType: "labels.icon", stylers: [{ visibility: "off" }] }, { featureType: "administrative", elementType: "geometry.fill", stylers: [{ color: "#000000" }, { lightness: 20 }] }, { featureType: "administrative", elementType: "geometry.stroke", stylers: [{ color: "#000000" }, { lightness: 17 }, { weight: 1.2 }] }, { featureType: "landscape", elementType: "all", stylers: [{ visibility: "on" }] }, { featureType: "landscape", elementType: "geometry", stylers: [{ color: "#000000" }, { lightness: 20 }] }, { featureType: "landscape", elementType: "labels.icon", stylers: [{ saturation: "-100" }, { lightness: "-54" }] }, { featureType: "poi", elementType: "all", stylers: [{ visibility: "off" }] }, { featureType: "poi", elementType: "geometry", stylers: [{ color: "#000000" }, { lightness: 21 }] }, { featureType: "poi", elementType: "labels.icon", stylers: [{ saturation: "-89" }, { lightness: "-55" }] }, { featureType: "road", elementType: "labels.icon", stylers: [{ visibility: "on" }] }, { featureType: "road.highway", elementType: "geometry.fill", stylers: [{ color: "#000000" }, { lightness: 17 }] }, { featureType: "road.highway", elementType: "geometry.stroke", stylers: [{ color: "#000000" }, { lightness: 29 }, { weight: .2 }] }, { featureType: "road.arterial", elementType: "geometry", stylers: [{ color: "#000000" }, { lightness: 25 }] }, { featureType: "road.local", elementType: "geometry", stylers: [{ color: "#000000" }, { lightness: 16 }] }, { featureType: "transit", elementType: "geometry", stylers: [{ color: "#000000" }, { lightness: 19 }] }, { featureType: "transit.station", elementType: "labels.icon", stylers: [{ visibility: "on" }, { saturation: "-100" }, { lightness: "-51" }] }, { featureType: "water", elementType: "geometry", stylers: [{ color: "#000000" }, { lightness: 17 }] }];
 
     this.includeAPI();
   }
@@ -111,26 +118,19 @@ var MapGen = function () {
       var _this = this;
 
       this.mapOptions = {
-        zoom: 18,
-        mapTypeId: google.maps.MapTypeId.ROADMAP,
-        styles: this.mapStyles,
+        mapTypeId: 'roadmap',
         mapTypeControl: false,
         scaleControl: false,
         streetViewControl: false,
         rotateControl: false,
         scrollwheel: false,
-        zoomControl: true
+        styles: [{ "featureType": "landscape", "stylers": [{ "saturation": -100 }, { "lightness": 65 }, { "visibility": "on" }] }, { "featureType": "poi", "elementType": "all", "stylers": [{ "visibility": "off" }] }, { "featureType": "road.highway", "stylers": [{ "saturation": -100 }, { "visibility": "simplified" }] }, { "featureType": "road.arterial", "stylers": [{ "saturation": -100 }, { "lightness": 30 }, { "visibility": "on" }] }, { "featureType": "road.local", "stylers": [{ "saturation": -100 }, { "lightness": 40 }, { "visibility": "on" }] }, { "featureType": "transit", "stylers": [{ "saturation": -100 }, { "visibility": "simplified" }] }, { "featureType": "administrative.province", "stylers": [{ "visibility": "off" }] }, { "featureType": "water", "elementType": "labels", "stylers": [{ "visibility": "on" }, { "lightness": -25 }, { "saturation": -100 }] }, { "featureType": "water", "elementType": "geometry", "stylers": [{ "hue": "#ffff00" }, { "lightness": -25 }, { "saturation": -97 }] }]
       };
+      this.mapOptions.zoom = this.isMobile ? 16 : 18;
+      this.mapOptions.zoomControl = this.isMobile ? false : true;
+      this.mapOptions.draggable = this.isMobile ? false : true;
 
       this.mapOptions.center = new google.maps.LatLng(this.lat, this.lng);
-
-      if (window.matchMedia("(max-width: 767px)").matches) {
-        this.mapOptions.center = new google.maps.LatLng(this.latMobile, this.lngMobile);
-        this.mapOptions.draggable = false;
-        this.mapOptions.zoom = 16;
-        this.mapOptions.zoomControl = false;
-      }
-
       this.map = new google.maps.Map(this.mapSelector, this.mapOptions);
 
       this.addMarker();

@@ -1,5 +1,5 @@
 /*!
-  hey, [be]Lazy.js - v1.5.4 - 2016.03.06
+  hey, [be]Lazy.js - v1.6.2 - 2016.05.09
   A fast, small and dependency free lazy load script (https://github.com/dinbror/blazy)
   (c) Bjoern Klinggaard - @bklinggaard - http://dinbror.dk/blazy
 */
@@ -21,7 +21,8 @@
     'use strict';
 
     //private vars
-    var source, viewport, isRetina;
+    var _source, _viewport, _isRetina, _attrSrc = 'src',
+        _attrSrcset = 'srcset';
 
     // constructor
     return function Blazy(options) {
@@ -52,16 +53,17 @@
         scope.options.separator = scope.options.separator || '|';
         scope.options.container = scope.options.container ? document.querySelectorAll(scope.options.container) : false;
         scope.options.errorClass = scope.options.errorClass || 'b-error';
-        scope.options.breakpoints = scope.options.breakpoints || false;
+        scope.options.breakpoints = scope.options.breakpoints || false; // obsolete
         scope.options.loadInvisible = scope.options.loadInvisible || false;
         scope.options.successClass = scope.options.successClass || 'b-loaded';
         scope.options.validateDelay = scope.options.validateDelay || 25;
         scope.options.saveViewportOffsetDelay = scope.options.saveViewportOffsetDelay || 50;
-        scope.options.src = source = scope.options.src || 'data-src';
-        isRetina = window.devicePixelRatio > 1;
-        viewport = {};
-        viewport.top = 0 - scope.options.offset;
-        viewport.left = 0 - scope.options.offset;
+        scope.options.srcset = scope.options.srcset || 'data-srcset';
+        scope.options.src = _source = scope.options.src || 'data-src';
+        _isRetina = window.devicePixelRatio > 1;
+        _viewport = {};
+        _viewport.top = 0 - scope.options.offset;
+        _viewport.left = 0 - scope.options.offset;
 
 
         /* public functions
@@ -104,42 +106,43 @@
         }, scope.options.saveViewportOffsetDelay, scope);
         saveViewportOffset(scope.options.offset);
 
-        //handle multi-served image src
+        //handle multi-served image src (obsolete)
         each(scope.options.breakpoints, function(object) {
             if (object.width >= window.screen.width) {
-                source = object.src;
+                _source = object.src;
                 return false;
             }
         });
 
         // start lazy load
-        initialize(scope);
+        setTimeout(function() {
+            initialize(scope);
+        }); // "dom ready" fix
+
     };
 
 
     /* Private helper functions
      ************************************/
     function initialize(self) {
-        setTimeout(function() {
-            var util = self._util;
-            // First we create an array of elements to lazy load
-            util.elements = toArray(self.options.selector);
-            util.count = util.elements.length;
-            // Then we bind resize and scroll events if not already binded
-            if (util.destroyed) {
-                util.destroyed = false;
-                if (self.options.container) {
-                    each(self.options.container, function(object) {
-                        bindEvent(object, 'scroll', util.validateT);
-                    });
-                }
-                bindEvent(window, 'resize', util.saveViewportOffsetT);
-                bindEvent(window, 'resize', util.validateT);
-                bindEvent(window, 'scroll', util.validateT);
+        var util = self._util;
+        // First we create an array of elements to lazy load
+        util.elements = toArray(self.options.selector);
+        util.count = util.elements.length;
+        // Then we bind resize and scroll events if not already binded
+        if (util.destroyed) {
+            util.destroyed = false;
+            if (self.options.container) {
+                each(self.options.container, function(object) {
+                    bindEvent(object, 'scroll', util.validateT);
+                });
             }
-            // And finally, we start to lazy load.
-            validate(self);
-        }, 1); // "dom ready" fix
+            bindEvent(window, 'resize', util.saveViewportOffsetT);
+            bindEvent(window, 'resize', util.validateT);
+            bindEvent(window, 'scroll', util.validateT);
+        }
+        // And finally, we start to lazy load.
+        validate(self);
     }
 
     function validate(self) {
@@ -162,39 +165,69 @@
         var rect = ele.getBoundingClientRect();
         return (
             // Intersection
-            rect.right >= viewport.left && rect.bottom >= viewport.top && rect.left <= viewport.right && rect.top <= viewport.bottom
+            rect.right >= _viewport.left && rect.bottom >= _viewport.top && rect.left <= _viewport.right && rect.top <= _viewport.bottom
         );
     }
 
     function loadElement(ele, force, options) {
         // if element is visible, not loaded or forced
         if (!hasClass(ele, options.successClass) && (force || options.loadInvisible || (ele.offsetWidth > 0 && ele.offsetHeight > 0))) {
-            var dataSrc = ele.getAttribute(source) || ele.getAttribute(options.src); // fallback to default 'data-src'
+            var dataSrc = ele.getAttribute(_source) || ele.getAttribute(options.src); // fallback to default 'data-src'
             if (dataSrc) {
                 var dataSrcSplitted = dataSrc.split(options.separator);
-                var src = dataSrcSplitted[isRetina && dataSrcSplitted.length > 1 ? 1 : 0];
-                var isImage = ele.nodeName.toLowerCase() === 'img';
+                var src = dataSrcSplitted[_isRetina && dataSrcSplitted.length > 1 ? 1 : 0];
+                var isImage = equal(ele, 'img');
                 // Image or background image
                 if (isImage || ele.src === undefined) {
                     var img = new Image();
-                    img.onerror = function() {
+                    // using EventListener instead of onerror and onload
+                    // due to bug introduced in chrome v50 
+                    // (https://productforums.google.com/forum/#!topic/chrome/p51Lk7vnP2o)
+                    var onErrorHandler = function() {
                         if (options.error) options.error(ele, "invalid");
                         addClass(ele, options.errorClass);
+                        unbindEvent(img, 'error', onErrorHandler);
+                        unbindEvent(img, 'load', onLoadHandler);
                     };
-                    img.onload = function() {
-                        // Is element an image or should we add the src as a background image?
-                        isImage ? ele.src = src : ele.style.backgroundImage = 'url("' + src + '")';
+                    var onLoadHandler = function() {
+                        // Is element an image
+                        if (isImage) {
+                            setSrc(ele, src); //src
+                            handleSource(ele, _attrSrcset, options.srcset); //srcset
+                            //picture element
+                            var parent = ele.parentNode;
+                            if (parent && equal(parent, 'picture')) {
+                                each(parent.getElementsByTagName('source'), function(source) {
+                                    handleSource(source, _attrSrcset, options.srcset);
+                                });
+                            }
+                        // or background-image
+                        } else {
+                            ele.style.backgroundImage = 'url("' + src + '")';
+                        }
                         itemLoaded(ele, options);
+                        unbindEvent(img, 'load', onLoadHandler);
+                        unbindEvent(img, 'error', onErrorHandler);
                     };
-                    img.src = src; //preload
-                    // An item with src like iframe, unity, video etc
-                } else {
-                    ele.src = src;
+                    bindEvent(img, 'error', onErrorHandler);
+                    bindEvent(img, 'load', onLoadHandler);
+                    setSrc(img, src); //preload
+                } else { // An item with src like iframe, unity, simpelvideo etc
+                    setSrc(ele, src);
                     itemLoaded(ele, options);
                 }
             } else {
-                if (options.error) options.error(ele, "missing");
-                if (!hasClass(ele, options.errorClass)) addClass(ele, options.errorClass);
+                // video with child source
+                if (equal(ele, 'video')) {
+                    each(ele.getElementsByTagName('source'), function(source) {
+                        handleSource(source, _attrSrc, options.src);
+                    });
+                    ele.load();
+                    itemLoaded(ele, options);
+                } else {
+                    if (options.error) options.error(ele, "missing");
+                    addClass(ele, options.errorClass);
+                }
             }
         }
     }
@@ -203,10 +236,26 @@
         addClass(ele, options.successClass);
         if (options.success) options.success(ele);
         // cleanup markup, remove data source attributes
+        ele.removeAttribute(options.src);
         each(options.breakpoints, function(object) {
             ele.removeAttribute(object.src);
         });
-        ele.removeAttribute(options.src);
+    }
+
+    function setSrc(ele, src) {
+        ele[_attrSrc] = src;
+    }
+
+    function handleSource(ele, attr, dataAttr) {
+        var dataSrc = ele.getAttribute(dataAttr);
+        if (dataSrc) {
+            ele[attr] = dataSrc;
+            ele.removeAttribute(dataAttr);
+        }
+    }
+
+    function equal(ele, str) {
+        return ele.nodeName.toLowerCase() === str;
     }
 
     function hasClass(ele, className) {
@@ -214,7 +263,9 @@
     }
 
     function addClass(ele, className) {
-        ele.className = ele.className + ' ' + className;
+        if (!hasClass(ele, className)) {
+            ele.className += ' ' + className;
+        }
     }
 
     function toArray(selector) {
@@ -225,8 +276,8 @@
     }
 
     function saveViewportOffset(offset) {
-        viewport.bottom = (window.innerHeight || document.documentElement.clientHeight) + offset;
-        viewport.right = (window.innerWidth || document.documentElement.clientWidth) + offset;
+        _viewport.bottom = (window.innerHeight || document.documentElement.clientHeight) + offset;
+        _viewport.right = (window.innerWidth || document.documentElement.clientWidth) + offset;
     }
 
     function bindEvent(ele, type, fn) {
