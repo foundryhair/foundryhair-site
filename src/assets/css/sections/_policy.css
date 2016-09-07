@@ -22,7 +22,7 @@
 @media screen and (min-width: $mq-small) {
   .policy {
     &__column {
-      lost-column: 1/2;
+      lost-column: 1/2 2 100px;
     }
     &__title {
       h2 {

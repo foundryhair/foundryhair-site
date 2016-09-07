@@ -26,3 +26,21 @@
     }
   }
 }
+
+@media screen and (max-width: $mq-small--max) {
+  .transition {
+    &--hide-mobile {
+      display: none;
+    }
+  }
+}
+
+@media screen and (min-width: $mq-small) {
+  .transition {
+    &--dark-desktop {
+      path {
+        fill: $c-pallete1;
+      }
+    }
+  }
+}
