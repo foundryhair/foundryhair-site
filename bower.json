@@ -16,7 +16,6 @@
   ],
   "dependencies": {
     "fastclick": "~1.0.6",
-    "modernizr": "~2.8.3",
     "normalize.css": "~3.0.3",
     "bLazy": "blazy#^1.5.4",
     "instafeed.js": "^1.4.1"
