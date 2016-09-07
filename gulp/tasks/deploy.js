@@ -3,6 +3,6 @@ var gulp    = require('gulp'),
 
 gulp.task('deploy', function() {
   return gulp.src('./dist/**/*').pipe(ghPages({
-    remoteUrl: "https://github.com/taylorkmho/foundryhair-site.git"
+    remoteUrl: "https://github.com/foundryhair/foundryhair-site.git"
   }));
 });
