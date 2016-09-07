@@ -34,7 +34,6 @@
     "gulp-jade": "^1.1.0",
     "gulp-postcss": "^6.1.0",
     "gulp-sourcemaps": "^1.6.0",
-    "lodash": "^4.6.1",
     "lost": "^6.7.2",
     "main-bower-files": "^2.11.1",
     "postcss-color-function": "^2.0.1",

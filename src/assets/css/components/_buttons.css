@@ -94,7 +94,7 @@
         > span {
           opacity: 1;
           transform: translateY(100%);
-          transition-delay: 500ms;
+          transition-delay: 250ms;
         }
       }
     }
