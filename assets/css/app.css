@@ -859,6 +859,26 @@ svg.foundry-logo path.text-salon-coop {
     font-size: 2.375rem;
   }
 }
+.copyright {
+  padding: 1em;
+  color: #fff;
+  background-color: #3D3C40;
+  text-align: center;
+}
+.copyright span {
+  font-weight: 400;
+}
+@media screen and (min-width: 768px) {
+  .copyright {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    z-index: 400;
+    color: #3D3C40;
+    background-color: transparent;
+  }
+}
 .policy {
   background-color: #eeede9;
   padding: calc(1em*2) 1em;
