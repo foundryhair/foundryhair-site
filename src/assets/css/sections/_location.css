@@ -182,3 +182,25 @@
     }
   }
 }
+
+.copyright {
+  padding: $column-gutter;
+  color: #fff;
+  background-color: $c-pallete1;
+  text-align: center;
+  span {
+    font-weight: 400;
+  }
+}
+
+@media screen and (min-width: $mq-small) {
+  .copyright {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    z-index: 400;
+    color: $c-pallete1;
+    background-color: transparent;
+  }
+}
