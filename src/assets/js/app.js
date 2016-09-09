@@ -1,5 +1,6 @@
 import MapGen from "./lib/map-generator";
 import InstagramFeed from "./lib/instagram-feed";
+import smoothScroll from 'smooth-scroll';
 
 window['map'] = new MapGen('#map', 'map.mapInit');
 
@@ -21,3 +22,9 @@ window.onresize = () => {
     }, 500)
   }
 }
+
+smoothScroll.init({
+  selector: '[smooth-scroll]',
+  speed: 500,
+  easing: 'easeInOutCubic'
+});
