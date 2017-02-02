@@ -30,4 +30,4 @@ smoothScroll.init({
   easing: 'easeInOutCubic'
 });
 
-let bookingLink = new BookingLink('#booking-link')
+let bookingLink = new BookingLink('.booking-link')
