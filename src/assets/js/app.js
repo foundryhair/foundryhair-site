@@ -1,5 +1,6 @@
 import MapGen from "./lib/map-generator";
 import InstagramFeed from "./lib/instagram-feed";
+import BookingLink from "./lib/booking-link";
 import smoothScroll from 'smooth-scroll';
 
 window['map'] = new MapGen('#map', 'map.mapInit');
@@ -28,3 +29,5 @@ smoothScroll.init({
   speed: 500,
   easing: 'easeInOutCubic'
 });
+
+let bookingLink = new BookingLink('#booking-link')

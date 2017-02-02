@@ -43,6 +43,7 @@
 @media screen and (min-width: $mq-small) {
   .btn {
     &--callout {
+      display: block;
       > span {
         position: absolute;
         left: 0;
@@ -55,7 +56,7 @@
         color: #fff;
         font-size: 1rem;
         font-weight: 200;
-        text-transform: capitalize;
+        text-transform: initial;
         padding: $column-gutter;
         border-radius: 4px;
         box-shadow: 0 2px 3px 1px color(#000 a(10%));
