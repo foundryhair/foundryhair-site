@@ -52,7 +52,7 @@ _smoothScroll2.default.init({
   easing: 'easeInOutCubic'
 });
 
-var bookingLink = new _bookingLink2.default('#booking-link');
+var bookingLink = new _bookingLink2.default('.booking-link');
 
 },{"./lib/booking-link":3,"./lib/instagram-feed":4,"./lib/map-generator":5,"smooth-scroll":1}],3:[function(require,module,exports){
 'use strict';
@@ -63,29 +63,35 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var BookingLink = function () {
   function BookingLink(selector) {
+    var _this = this;
+
     _classCallCheck(this, BookingLink);
 
     this.selector = selector;
-    this.el = document.querySelector(selector);
+    this.elArr = [].concat(_toConsumableArray(document.querySelectorAll(selector)));
 
-    this.setLink();
+    this.elArr.forEach(function (el) {
+      _this.setLink(el);
+    });
   }
 
   _createClass(BookingLink, [{
     key: 'setLink',
-    value: function setLink() {
+    value: function setLink(el) {
       var userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
       switch (true) {
         case /android/i.test(userAgent):
-          this.el.href = this.el.dataset['href-android'];
+          el.href = el.dataset['href-android'];
           break;
         case /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream:
-          this.el.href = this.el.dataset['href-ios'];
+          el.href = el.dataset['href-ios'];
           break;
         default:
           break;
