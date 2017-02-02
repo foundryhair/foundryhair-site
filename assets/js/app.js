@@ -15,6 +15,10 @@ var _instagramFeed = require("./lib/instagram-feed");
 
 var _instagramFeed2 = _interopRequireDefault(_instagramFeed);
 
+var _bookingLink = require("./lib/booking-link");
+
+var _bookingLink2 = _interopRequireDefault(_bookingLink);
+
 var _smoothScroll = require("smooth-scroll");
 
 var _smoothScroll2 = _interopRequireDefault(_smoothScroll);
@@ -48,7 +52,53 @@ _smoothScroll2.default.init({
   easing: 'easeInOutCubic'
 });
 
-},{"./lib/instagram-feed":3,"./lib/map-generator":4,"smooth-scroll":1}],3:[function(require,module,exports){
+var bookingLink = new _bookingLink2.default('#booking-link');
+
+},{"./lib/booking-link":3,"./lib/instagram-feed":4,"./lib/map-generator":5,"smooth-scroll":1}],3:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var BookingLink = function () {
+  function BookingLink(selector) {
+    _classCallCheck(this, BookingLink);
+
+    this.selector = selector;
+    this.el = document.querySelector(selector);
+
+    this.setLink();
+  }
+
+  _createClass(BookingLink, [{
+    key: 'setLink',
+    value: function setLink() {
+      var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+      switch (true) {
+        case /android/i.test(userAgent):
+          this.el.href = this.el.dataset['href-android'];
+          break;
+        case /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream:
+          this.el.href = this.el.dataset['href-ios'];
+          break;
+        default:
+          break;
+      }
+    }
+  }]);
+
+  return BookingLink;
+}();
+
+exports.default = BookingLink;
+
+},{}],4:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -96,7 +146,7 @@ var InstagramFeed = function () {
 
 exports.default = InstagramFeed;
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
