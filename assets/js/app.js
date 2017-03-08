@@ -11,10 +11,6 @@ var _mapGenerator = require("./lib/map-generator");
 
 var _mapGenerator2 = _interopRequireDefault(_mapGenerator);
 
-var _instagramFeed = require("./lib/instagram-feed");
-
-var _instagramFeed2 = _interopRequireDefault(_instagramFeed);
-
 var _bookingLink = require("./lib/booking-link");
 
 var _bookingLink2 = _interopRequireDefault(_bookingLink);
@@ -27,12 +23,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 window['map'] = new _mapGenerator2.default('#map', 'map.mapInit');
 
-var instagramFeed = new _instagramFeed2.default('instafeed');
-
 var bLazy = new Blazy({
   selector: '.lazyload',
   successClass: 'lazyload--success',
-  errorClass: 'lazyload--error'
+  errorClass: 'lazyload--error',
+  breakpoints: [{
+    width: 768,
+    src: 'data-src-small'
+  }]
 });
 
 var resizing = false;
@@ -54,7 +52,7 @@ _smoothScroll2.default.init({
 
 var bookingLink = new _bookingLink2.default('.booking-link');
 
-},{"./lib/booking-link":3,"./lib/instagram-feed":4,"./lib/map-generator":5,"smooth-scroll":1}],3:[function(require,module,exports){
+},{"./lib/booking-link":3,"./lib/map-generator":4,"smooth-scroll":1}],3:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -105,54 +103,6 @@ var BookingLink = function () {
 exports.default = BookingLink;
 
 },{}],4:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var InstagramFeed = function () {
-  function InstagramFeed(selector) {
-    _classCallCheck(this, InstagramFeed);
-
-    this.selector = selector;
-    this.domSelector = document.querySelector('#' + selector);
-    this.instagramOptions = {
-      target: this.selector,
-      get: 'user',
-      userId: '2150537699',
-      accessToken: '2150537699.0859844.afc93a81b3bb4c0c9a3fa70de5740b9a',
-      resolution: 'standard_resolution',
-      sortBy: 'most-liked',
-      template: '<div class="feed__image" style="background-image:url({{image}})"></div>'
-    };
-
-    if (window.matchMedia("(max-width: 767px)").matches) {
-      this.instagramOptions.limit = 20;
-      this.instagramOptions.resolution = 'thumbnail';
-    }
-
-    this.initFeed();
-  }
-
-  _createClass(InstagramFeed, [{
-    key: 'initFeed',
-    value: function initFeed() {
-      var instagramFeed = new Instafeed(this.instagramOptions);
-      instagramFeed.run();
-    }
-  }]);
-
-  return InstagramFeed;
-}();
-
-exports.default = InstagramFeed;
-
-},{}],5:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {

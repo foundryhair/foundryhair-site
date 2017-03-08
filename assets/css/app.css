@@ -527,15 +527,45 @@ svg.foundry-logo path.text-salon-coop {
   }
 }
 .gallery {
+  position: relative;
   background-color: #3D3C40;
   color: #fff;
+}
+.gallery__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: top right;
+  opacity: 0;
+  transition: opacity 250ms ease-out;
+}
+.gallery__bg.lazyload--success {
+  opacity: 1;
+}
+.gallery:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  background-image:
+      linear-gradient( to bottom, rgba(0,0,0,0), #3D3C40 ),
+      linear-gradient( to left bottom, rgba(0,0,0,0), #3D3C40 );
 }
 .gallery__container {
   *zoom: 1;
   max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
-  padding: 0;
+  *zoom: 1;
+  display: block;
+  padding: 5% 1em 7.5%;
 }
 .gallery__container:before{
   content: '';
@@ -546,11 +576,19 @@ svg.foundry-logo path.text-salon-coop {
   display: table;
   clear: both;
 }
-.gallery__copy,
-  .gallery__feed {
-  width: 100%;
+.gallery__container:before{
+  content: '';
+  display: table;
+}
+.gallery__container:after{
+  content: '';
+  display: table;
+  clear: both;
 }
 .gallery__copy {
+  position: relative;
+  z-index: 210;
+  width: 100%;
   padding-left: calc(1em*2);
   padding-right: calc(1em*2);
 }
@@ -566,131 +604,20 @@ svg.foundry-logo path.text-salon-coop {
 .gallery .transition {
   z-index: 300;
 }
-@media screen and (max-width: 767px) {
-  .gallery__container {
-    position: relative;
-  }
-  .gallery__feed {
-    position: relative;
-  }
-  .gallery__feed:after {
-    content: "";
-    position: absolute;
-    display: block;
-    top: 0;
-    left: 0;
-    z-index: 200;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(61, 60, 64, 0.75);
-  }
-  .gallery__copy {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    z-index: 210;
-    width: 100%;
-    -ms-transform: translateY(-50%);
-        transform: translateY(-50%);
-  }
-}
 @media screen and (min-width: 768px) {
-  .gallery__container {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-align: center;
-        align-items: center;
-    padding: calc(1em*4) 1em;
-  }
-  .gallery__copy,
-    .gallery__feed {
-    width: calc(99.99% * 1/2 - (30px - 30px * 1/2));
-  }
-  .gallery__copy:nth-child(1n),
-    .gallery__feed:nth-child(1n){
-    float: left;
-    margin-right: 30px;
-    clear: none;
-  }
-  .gallery__copy:last-child,
-    .gallery__feed:last-child{
-    margin-right: 0;
-  }
-  .gallery__copy:nth-child(2n),
-    .gallery__feed:nth-child(2n){
-    margin-right: 0;
-    float: right;
-  }
-  .gallery__copy:nth-child(2n + 1),
-    .gallery__feed:nth-child(2n + 1){
-    clear: left;
-  }
-  .gallery__feed {
-    margin-bottom: 0;
+  .gallery:after {
+    background-image:
+        linear-gradient( to bottom, rgba(0,0,0,0), #3D3C40 ),
+        linear-gradient( to left bottom, rgba(0,0,0,0), rgba(0,0,0,0), #3D3C40 );
   }
   .gallery__copy {
+    display: inline-block;
+    width: 50%;
     padding-left: 0;
     padding-right: 0;
   }
   .gallery__copy br {
     display: inline;
-  }
-}
-.feed {
-  position: relative;
-  overflow: hidden;
-}
-.feed__container {
-  max-height: 400px;
-  white-space: nowrap;
-  background-color: #3D3C40;
-}
-.feed__image {
-  width: calc(99.999999% * 1/5);
-  padding-bottom: 20%;
-  background-size: cover;
-  background-position: center center;
-}
-.feed__image:nth-child(1n){
-  float: left;
-  margin-right: 0;
-  clear: none;
-}
-.feed__image:last-child{
-  margin-right: 0;
-}
-.feed__image:nth-child(5n){
-  margin-right: 0;
-  float: right;
-}
-.feed__image:nth-child(5n + 1){
-  clear: left;
-}
-@media screen and (min-width: 768px) {
-  .feed__container {
-    max-height: 70vh;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    -webkit-overflow-scrolling: touch;
-  }
-  .feed__image {
-    width: calc(99.999999% * 1/2);
-    padding-bottom: 50%;
-  }
-  .feed__image:nth-child(1n){
-    float: left;
-    margin-right: 0;
-    clear: none;
-  }
-  .feed__image:last-child{
-    margin-right: 0;
-  }
-  .feed__image:nth-child(2n){
-    margin-right: 0;
-    float: right;
-  }
-  .feed__image:nth-child(2n + 1){
-    clear: left;
   }
 }
 .location {
@@ -1415,6 +1342,7 @@ svg.foundry-logo path.text-salon-coop {
   }
 }
 .transition {
+  position: relative;
   z-index: 110;
   pointer-events: none;
   display: block;
