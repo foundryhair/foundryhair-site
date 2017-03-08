@@ -1,4 +1,5 @@
 .transition {
+  position: relative;
   z-index: 110;
   pointer-events: none;
   display: block;

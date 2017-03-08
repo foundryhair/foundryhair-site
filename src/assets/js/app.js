@@ -1,16 +1,19 @@
 import MapGen from "./lib/map-generator";
-import InstagramFeed from "./lib/instagram-feed";
 import BookingLink from "./lib/booking-link";
 import smoothScroll from 'smooth-scroll';
 
 window['map'] = new MapGen('#map', 'map.mapInit');
 
-let instagramFeed = new InstagramFeed('instafeed');
-
 let bLazy = new Blazy({
   selector: '.lazyload',
   successClass: 'lazyload--success',
-  errorClass: 'lazyload--error'
+  errorClass: 'lazyload--error',
+  breakpoints: [
+    {
+      width: 768,
+      src: 'data-src-small'
+    }
+  ]
 });
 
 let resizing = false;
