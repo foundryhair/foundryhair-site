@@ -916,6 +916,12 @@ svg.foundry-logo path.text-salon-coop {
   overflow: hidden;
   transition: all ease-out 500ms;
 }
+.policy-dropdown__hidden li {
+  margin-bottom: calc(1em/2);
+}
+.policy-dropdown__hidden li:last-of-type {
+  margin-bottom: 0;
+}
 .policy-dropdown__toggle {
   display: none;
 }
