@@ -1,5 +1,5 @@
 /*!
-  hey, [be]Lazy.js - v1.6.2 - 2016.05.09
+  hey, [be]Lazy.js - v1.8.2 - 2016.10.25
   A fast, small and dependency free lazy load script (https://github.com/dinbror/blazy)
   (c) Bjoern Klinggaard - @bklinggaard - http://dinbror.dk/blazy
 */
@@ -21,8 +21,7 @@
     'use strict';
 
     //private vars
-    var _source, _viewport, _isRetina, _attrSrc = 'src',
-        _attrSrcset = 'srcset';
+    var _source, _viewport, _isRetina, _supportClosest, _attrSrc = 'src', _attrSrcset = 'srcset';
 
     // constructor
     return function Blazy(options) {
@@ -48,18 +47,21 @@
         scope.options = options || {};
         scope.options.error = scope.options.error || false;
         scope.options.offset = scope.options.offset || 100;
+        scope.options.root = scope.options.root || document;
         scope.options.success = scope.options.success || false;
         scope.options.selector = scope.options.selector || '.b-lazy';
         scope.options.separator = scope.options.separator || '|';
-        scope.options.container = scope.options.container ? document.querySelectorAll(scope.options.container) : false;
+        scope.options.containerClass = scope.options.container;
+        scope.options.container = scope.options.containerClass ? document.querySelectorAll(scope.options.containerClass) : false;
         scope.options.errorClass = scope.options.errorClass || 'b-error';
-        scope.options.breakpoints = scope.options.breakpoints || false; // obsolete
+        scope.options.breakpoints = scope.options.breakpoints || false;
         scope.options.loadInvisible = scope.options.loadInvisible || false;
         scope.options.successClass = scope.options.successClass || 'b-loaded';
         scope.options.validateDelay = scope.options.validateDelay || 25;
         scope.options.saveViewportOffsetDelay = scope.options.saveViewportOffsetDelay || 50;
         scope.options.srcset = scope.options.srcset || 'data-srcset';
         scope.options.src = _source = scope.options.src || 'data-src';
+        _supportClosest = Element.prototype.closest;
         _isRetina = window.devicePixelRatio > 1;
         _viewport = {};
         _viewport.top = 0 - scope.options.offset;
@@ -69,11 +71,11 @@
         /* public functions
          ************************************/
         scope.revalidate = function() {
-            initialize(this);
+            initialize(scope);
         };
         scope.load = function(elements, force) {
             var opt = this.options;
-            if (elements.length === undefined) {
+            if (elements && elements.length === undefined) {
                 loadElement(elements, force, opt);
             } else {
                 each(elements, function(element) {
@@ -81,11 +83,10 @@
                 });
             }
         };
-        scope.destroy = function() {
-            var self = this;
-            var util = self._util;
-            if (self.options.container) {
-                each(self.options.container, function(object) {
+        scope.destroy = function() {            
+            var util = scope._util;
+            if (scope.options.container) {
+                each(scope.options.container, function(object) {
                     unbindEvent(object, 'scroll', util.validateT);
                 });
             }
@@ -127,7 +128,7 @@
     function initialize(self) {
         var util = self._util;
         // First we create an array of elements to lazy load
-        util.elements = toArray(self.options.selector);
+        util.elements = toArray(self.options);
         util.count = util.elements.length;
         // Then we bind resize and scroll events if not already binded
         if (util.destroyed) {
@@ -149,7 +150,7 @@
         var util = self._util;
         for (var i = 0; i < util.count; i++) {
             var element = util.elements[i];
-            if (elementInView(element) || hasClass(element, self.options.successClass)) {
+            if (elementInView(element, self.options) || hasClass(element, self.options.successClass)) {
                 self.load(element);
                 util.elements.splice(i, 1);
                 util.count--;
@@ -161,22 +162,55 @@
         }
     }
 
-    function elementInView(ele) {
+    function elementInView(ele, options) {
         var rect = ele.getBoundingClientRect();
-        return (
-            // Intersection
-            rect.right >= _viewport.left && rect.bottom >= _viewport.top && rect.left <= _viewport.right && rect.top <= _viewport.bottom
-        );
+
+        if(options.container && _supportClosest){
+            // Is element inside a container?
+            var elementContainer = ele.closest(options.containerClass);
+            if(elementContainer){
+                var containerRect = elementContainer.getBoundingClientRect();
+                // Is container in view?
+                if(inView(containerRect, _viewport)){
+                    var top = containerRect.top - options.offset;
+                    var right = containerRect.right + options.offset;
+                    var bottom = containerRect.bottom + options.offset;
+                    var left = containerRect.left - options.offset;
+                    var containerRectWithOffset = {
+                        top: top > _viewport.top ? top : _viewport.top,
+                        right: right < _viewport.right ? right : _viewport.right,
+                        bottom: bottom < _viewport.bottom ? bottom : _viewport.bottom,
+                        left: left > _viewport.left ? left : _viewport.left
+                    };
+                    // Is element in view of container?
+                    return inView(rect, containerRectWithOffset);
+                } else {
+                    return false;
+                }
+            }
+        }      
+        return inView(rect, _viewport);
+    }
+
+    function inView(rect, viewport){
+        // Intersection
+        return rect.right >= viewport.left &&
+               rect.bottom >= viewport.top && 
+               rect.left <= viewport.right && 
+               rect.top <= viewport.bottom;
     }
 
     function loadElement(ele, force, options) {
         // if element is visible, not loaded or forced
         if (!hasClass(ele, options.successClass) && (force || options.loadInvisible || (ele.offsetWidth > 0 && ele.offsetHeight > 0))) {
-            var dataSrc = ele.getAttribute(_source) || ele.getAttribute(options.src); // fallback to default 'data-src'
+            var dataSrc = getAttr(ele, _source) || getAttr(ele, options.src); // fallback to default 'data-src'
             if (dataSrc) {
                 var dataSrcSplitted = dataSrc.split(options.separator);
                 var src = dataSrcSplitted[_isRetina && dataSrcSplitted.length > 1 ? 1 : 0];
+                var srcset = getAttr(ele, options.srcset);
                 var isImage = equal(ele, 'img');
+                var parent = ele.parentNode;
+                var isPicture = parent && equal(parent, 'picture');
                 // Image or background image
                 if (isImage || ele.src === undefined) {
                     var img = new Image();
@@ -192,14 +226,8 @@
                     var onLoadHandler = function() {
                         // Is element an image
                         if (isImage) {
-                            setSrc(ele, src); //src
-                            handleSource(ele, _attrSrcset, options.srcset); //srcset
-                            //picture element
-                            var parent = ele.parentNode;
-                            if (parent && equal(parent, 'picture')) {
-                                each(parent.getElementsByTagName('source'), function(source) {
-                                    handleSource(source, _attrSrcset, options.srcset);
-                                });
+                            if(!isPicture) {
+                                handleSources(ele, src, srcset);
                             }
                         // or background-image
                         } else {
@@ -209,11 +237,20 @@
                         unbindEvent(img, 'load', onLoadHandler);
                         unbindEvent(img, 'error', onErrorHandler);
                     };
+                    
+                    // Picture element
+                    if (isPicture) {
+                        img = ele; // Image tag inside picture element wont get preloaded
+                        each(parent.getElementsByTagName('source'), function(source) {
+                            handleSource(source, _attrSrcset, options.srcset);
+                        });
+                    }
                     bindEvent(img, 'error', onErrorHandler);
                     bindEvent(img, 'load', onLoadHandler);
-                    setSrc(img, src); //preload
-                } else { // An item with src like iframe, unity, simpelvideo etc
-                    setSrc(ele, src);
+                    handleSources(img, src, srcset); // Preload
+
+                } else { // An item with src like iframe, unity games, simpel video etc
+                    ele.src = src;
                     itemLoaded(ele, options);
                 }
             } else {
@@ -236,22 +273,38 @@
         addClass(ele, options.successClass);
         if (options.success) options.success(ele);
         // cleanup markup, remove data source attributes
-        ele.removeAttribute(options.src);
+        removeAttr(ele, options.src);
+        removeAttr(ele, options.srcset);
         each(options.breakpoints, function(object) {
-            ele.removeAttribute(object.src);
+            removeAttr(ele, object.src);
         });
     }
 
-    function setSrc(ele, src) {
-        ele[_attrSrc] = src;
+    function handleSource(ele, attr, dataAttr) {
+        var dataSrc = getAttr(ele, dataAttr);
+        if (dataSrc) {
+            setAttr(ele, attr, dataSrc);
+            removeAttr(ele, dataAttr);
+        }
     }
 
-    function handleSource(ele, attr, dataAttr) {
-        var dataSrc = ele.getAttribute(dataAttr);
-        if (dataSrc) {
-            ele[attr] = dataSrc;
-            ele.removeAttribute(dataAttr);
+    function handleSources(ele, src, srcset){
+        if(srcset) {
+            setAttr(ele, _attrSrcset, srcset); //srcset
         }
+        ele.src = src; //src 
+    }
+
+    function setAttr(ele, attr, value){
+        ele.setAttribute(attr, value);
+    }
+
+    function getAttr(ele, attr) {
+        return ele.getAttribute(attr);
+    }
+
+    function removeAttr(ele, attr){
+        ele.removeAttribute(attr); 
     }
 
     function equal(ele, str) {
@@ -268,9 +321,9 @@
         }
     }
 
-    function toArray(selector) {
+    function toArray(options) {
         var array = [];
-        var nodelist = document.querySelectorAll(selector);
+        var nodelist = (options.root).querySelectorAll(options.selector);
         for (var i = nodelist.length; i--; array.unshift(nodelist[i])) {}
         return array;
     }
@@ -284,7 +337,7 @@
         if (ele.attachEvent) {
             ele.attachEvent && ele.attachEvent('on' + type, fn);
         } else {
-            ele.addEventListener(type, fn, false);
+            ele.addEventListener(type, fn, { capture: false, passive: true });
         }
     }
 
@@ -292,7 +345,7 @@
         if (ele.detachEvent) {
             ele.detachEvent && ele.detachEvent('on' + type, fn);
         } else {
-            ele.removeEventListener(type, fn, false);
+            ele.removeEventListener(type, fn, { capture: false, passive: true });
         }
     }
 
