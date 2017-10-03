@@ -79,6 +79,12 @@
     opacity: 0;
     overflow: hidden;
     transition: all ease-out 500ms;
+    li {
+      margin-bottom: calc($column-gutter/2);
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
   }
   &__toggle {
     display: none;
