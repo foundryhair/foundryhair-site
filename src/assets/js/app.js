@@ -1,8 +1,5 @@
-import MapGen from "./lib/map-generator";
-import BookingLink from "./lib/booking-link";
 import smoothScroll from 'smooth-scroll';
-
-window['map'] = new MapGen('#map', 'map.mapInit');
+import $ from 'jquery';
 
 let bLazy = new Blazy({
   selector: '.lazyload',
@@ -32,5 +29,3 @@ smoothScroll.init({
   speed: 500,
   easing: 'easeInOutCubic'
 });
-
-let bookingLink = new BookingLink('.booking-link')
