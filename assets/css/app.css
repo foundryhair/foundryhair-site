@@ -355,10 +355,6 @@ body {
     font-size: 100%;
   }
 }
-::-moz-selection {
-  background-color: rgba(61, 60, 64, 0.8);
-  color: #fff;
-}
 ::selection {
   background-color: rgba(61, 60, 64, 0.8);
   color: #fff;
