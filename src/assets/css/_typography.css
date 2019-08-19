@@ -31,6 +31,10 @@ body > section {
     }
     &.small {
       line-height: 1.5;
+      a {
+        color: $c-pallete3;
+        font-weight: bold;
+      }
     }
   }
 }
