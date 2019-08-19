@@ -1,5 +1,4 @@
 import smoothScroll from 'smooth-scroll';
-import $ from 'jquery';
 
 let bLazy = new Blazy({
   selector: '.lazyload',
