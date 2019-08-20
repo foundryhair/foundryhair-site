@@ -114,12 +114,19 @@ block content
     svg.transition.transition--abs.transition--top.transition--dark(viewBox="0 0 717 80")
       path(d="M0.197861671,80 L720.197862,1.23762745e-14 L0.197861665,1.23762745e-14 L0.197861671,80 Z" fill="#222")
     .location__prompt.map-prompt
-      .map-prompt__copy
-        h2
-          | Get your new look at
-          a(href="https://maps.google.com/maps/dir/Current+Location/The+Foundry,+418+Kuulei+Road,+Kailua,+HI/@29.3058134,-149.0940517,5z/" target="_blank") 418A Ku&lsquo;ulei Road, Unit C<br>Kailua, HI 96734
-          | in the &ldquo;pink building&rdquo; just mauka of McDonald&rsquo;s.
-        p.popdown Public 3 &amp; 5 hour meter parking available at Lani Huli - 25 Aulike st. Kailua.
+      .map-prompt__container
+        a.map-prompt__item(href="https://goo.gl/maps/MQzobC2AhDoQtHbK6" target="_blank")
+          img(src="assets/images/marker-pink.png")
+          .map-prompt__item__text
+            h4 Foundry Salon
+            h5 418A Ku'ulei Road, Unit C<br />Kailua, HI 96744
+            h6 Located in the pink building street level. Next to the McDonald’s drive thru once you exit the parking lot.
+        a.map-prompt__item(href="https://goo.gl/maps/Kv4wAogDs4Mt2scm8" target="_blank")
+          img(src="assets/images/marker-parking.png")
+          .map-prompt__item__text
+            h4 Parking
+            h5 Lani Huli Building parking (coin metered)<br />25 Aulike St.<br />Kailua, HI 96734
+            h6 Parking is available at the Lani Huli Building’s basement coin metered lot.
     .location__map#map
     .copyright
       span.copyright__copy © 2016 – 2019 The Foundry, Salon Cooperative &amp; Creative Space
