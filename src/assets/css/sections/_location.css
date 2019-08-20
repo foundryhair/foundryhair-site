@@ -51,15 +51,13 @@
     color: #000;
     margin-bottom: 0.5rem;
     padding: calc($column-gutter / 2);
-    border-radius: 20px 20px 5px 5px;
+    border-radius: 20px;
     &:last-of-type {
       border-radius: 5px 5px 5px 20px;
+      margin-bottom: 0;
     }
     &:hover {
       background: #f9f9f9;
-    }
-    &:last-of-type {
-      margin-bottom: 0;
     }
     img {
       max-width: 24px;
@@ -85,7 +83,8 @@
     h6 {
       margin: 0.5rem 0 0;
       font-size: 0.75rem;
-      color: $c-text-alt;
+      color: $c-text-alt-2;
+      letter-spacing: 0.015625rem;
     }
   }
 }
