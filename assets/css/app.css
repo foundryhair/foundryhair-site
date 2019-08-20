@@ -675,16 +675,14 @@ svg.foundry-logo path.text-salon-coop {
   color: #000;
   margin-bottom: 0.5rem;
   padding: calc(1em / 2);
-  border-radius: 20px 20px 5px 5px;
+  border-radius: 20px;
 }
 .map-prompt__item:last-of-type {
   border-radius: 5px 5px 5px 20px;
+  margin-bottom: 0;
 }
 .map-prompt__item:hover {
   background: #f9f9f9;
-}
-.map-prompt__item:last-of-type {
-  margin-bottom: 0;
 }
 .map-prompt__item img {
   max-width: 24px;
@@ -710,7 +708,8 @@ svg.foundry-logo path.text-salon-coop {
 .map-prompt__container h6 {
   margin: 0.5rem 0 0;
   font-size: 0.75rem;
-  color: #5C5A5E;
+  color: #8E8C90;
+  letter-spacing: 0.015625rem;
 }
 .copyright {
   padding: 1em;
@@ -1087,7 +1086,7 @@ svg.foundry-logo path.text-salon-coop {
   font-weight: 300;
 }
 .metadata__group[href]:hover {
-  color: rgb(133, 131, 134);
+  color: #8E8C90;
 }
 .metadata__group img {
   height: 20px;
