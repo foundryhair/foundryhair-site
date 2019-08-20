@@ -625,7 +625,7 @@ svg.foundry-logo path.text-salon-coop {
   background-color: #eeede9;
   background-image: url("../images/map-v3.png");
   background-size: auto 100%;
-  background-position: left center;
+  background-position: 15% center;
 }
 .location:after {
   content: "";
@@ -637,12 +637,13 @@ svg.foundry-logo path.text-salon-coop {
   display: block;
   background-image: url("../images/map-v3.gif");
   background-size: auto 100%;
+  background-position: 87% center;
   background-repeat: no-repeat;
 }
 .location__map {
   width: 100%;
   height: 0;
-  padding-bottom: 100%;
+  padding-bottom: 150%;
 }
 .location__prompt {
   position: absolute;
@@ -653,6 +654,12 @@ svg.foundry-logo path.text-salon-coop {
   width: 100%;
 }
 @media screen and (min-width: 768px) {
+  .location {
+    background-position: left center;
+  }
+  .location:after {
+    background-position: left center;
+  }
   .location__map {
     padding-bottom: 53%;
   }
